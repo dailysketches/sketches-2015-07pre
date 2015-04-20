@@ -22,7 +22,7 @@ void ofApp::setup(){
     duration = .03, colors = 256;
     saveOnFrame = 20;
 
-    filename = "render.gif";
+    filename = ofGetTimestampString("%d.%m.%Y") + ".gif";
     framerate = renderMode ? 5 : 60;
     
     //Init

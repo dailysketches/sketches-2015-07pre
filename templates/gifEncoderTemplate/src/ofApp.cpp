@@ -2,18 +2,16 @@
 
 /* This draws the animation */
 void ofApp::setupAnim() {
-    vid.initGrabber(width, height);
+    
 }
 
 void ofApp::updateAnim(){
-    vid.update();
+    
 }
 
 void ofApp::drawAnim() {
-    vid.draw(0, 0);
-    if(ofGetFrameNum() % 2 == 0) {
-        ofDrawBitmapString(ofToString(ofGetFrameNum()), 10, 20);
-    }
+    ofBackground(0, 0, 0);
+    ofRect(ofGetFrameNum() * 5, ofGetFrameNum() * 5, width * 0.2, height * 0.2);
 }
 
 /* This handles the setup and GIF rendering, etc */
@@ -31,6 +29,7 @@ void ofApp::setup(){
     ofSetFrameRate(framerate);
     ofSetWindowShape(width, height);
     gifEncoder.setup(width, height, duration, colors);
+    nowSaved = "";
     
     fbo.allocate(width, height, GL_RGB);
     fbo.begin();
@@ -51,6 +50,15 @@ void ofApp::draw(){
     fbo.end();
     captureFrame();
     fbo.draw(0, 0);
+    ofDrawBitmapString(
+        "Recording to frame #" +
+        ofToString(saveOnFrame) +
+        " at " +
+        ofToString(framerate) +
+        "fps...\nCurrent frame: " +
+        ofToString(ofGetFrameNum()) +
+        "\n" + nowSaved,
+        20, height - 50);
 }
 
 void ofApp::captureFrame() {
@@ -60,6 +68,7 @@ void ofApp::captureFrame() {
     
     if(ofGetFrameNum() == saveOnFrame) {
         gifEncoder.save(filename);
+        nowSaved = "Now saved!";
     }
 }
 

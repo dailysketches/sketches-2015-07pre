@@ -23,16 +23,14 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-    void onGifSaved(string & fileName);
     void exit();
     void captureFrame();
 
     int width, height, colors, duration;
     int framerate, saveOnFrame;
-    string filename;
+    string filename, nowSaved;
     bool renderMode;
 
-    ofVideoGrabber vid;
     ofxGifEncoder gifEncoder;
     ofFbo fbo;
     ofPixels pixels;

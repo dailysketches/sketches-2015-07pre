@@ -24,11 +24,10 @@ class ofApp : public ofBaseApp{
         void exit();
         void captureFrame();
     
-        vector <ofTexture *> txs; // for previewing
-        vector <ofxGifFrame *> pxs;
-        
-    int width, height, colors, duration;
-    string file;
+        int width, height, colors, duration;
+        int framerate, saveOnFrame;
+        string filename;
+        bool renderMode;
     
         ofVideoGrabber vid;
         ofxGifEncoder gifEncoder;

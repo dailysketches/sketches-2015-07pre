@@ -1,25 +1,25 @@
 #include "ofApp.h"
 
 void ofApp::setup(){
-    width = 500;
-    height = 500;
-    duration = .03;
-    colors = 256;
-    file = "render.gif";
+    //Gif render values
+    renderMode = true;
+    width = 500, height = 500;
+    duration = .03, colors = 256;
+    filename = "render.gif";
+    framerate = renderMode ? 5 : 60;
+    saveOnFrame = 20;
     
+    //Init
+    ofSetFrameRate(framerate);
     ofSetWindowShape(width, height);
-    vid.initGrabber(width, height);
-    
     gifEncoder.setup(width, height, duration, colors);
     
+    //Begin patch
     ofBackground(50, 40, 50);
-    ofSetFrameRate(5);
+    vid.initGrabber(width, height);
 }
 
 void ofApp::update(){
-    if(ofGetFrameNum() == 20) {
-        gifEncoder.save(file);
-    }
     vid.update();
 }
 
@@ -32,13 +32,14 @@ void ofApp::draw(){
 }
 
 void ofApp::captureFrame() {
-    gifEncoder.addFrame(
-                        vid.getPixels(),
-                        width,
-                        height,
+
+    gifEncoder.addFrame(vid.getPixels(), width, height,
                         vid.getPixelsRef().getBitsPerPixel(),
-                        .1f
-                        );
+                        duration);
+    
+    if(ofGetFrameNum() == saveOnFrame) {
+        gifEncoder.save(filename);
+    }
 }
 
 void ofApp::exit(){

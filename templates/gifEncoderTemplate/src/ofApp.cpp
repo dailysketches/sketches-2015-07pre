@@ -1,12 +1,16 @@
 #include "ofApp.h"
 
 void ofApp::setup(){
-    width = 500, height = 500;
+    width = 500;
+    height = 500;
+    duration = .03;
+    colors = 256;
+    file = "render.gif";
     
     ofSetWindowShape(width, height);
     vid.initGrabber(width, height);
     
-    gifEncoder.setup(width, height, .25, 256);
+    gifEncoder.setup(width, height, duration, colors);
     
     ofBackground(50, 40, 50);
     ofSetFrameRate(5);
@@ -14,7 +18,7 @@ void ofApp::setup(){
 
 void ofApp::update(){
     if(ofGetFrameNum() == 20) {
-        gifEncoder.save("test.gif");
+        gifEncoder.save(file);
     }
     vid.update();
 }

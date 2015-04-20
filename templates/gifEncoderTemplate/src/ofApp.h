@@ -27,9 +27,9 @@ class ofApp : public ofBaseApp{
         vector <ofTexture *> txs; // for previewing
         vector <ofxGifFrame *> pxs;
         
-        int width, height;
-        int nFrames;
-        
+    int width, height, colors, duration;
+    string file;
+    
         ofVideoGrabber vid;
         ofxGifEncoder gifEncoder;
 

@@ -35,9 +35,12 @@ def generate_posts
 end
 
 def generate_post filename
-	file = open("dailysketches.github.io/app/_posts/#{filename}-sketch.md", 'w')
-	file.write(file_contents filename)
-	file.close
+	filepath = "dailysketches.github.io/app/_posts/#{filename}-sketch.md"
+	unless File.exist?(filepath)
+		file = open(filepath, 'w')
+		file.write(file_contents filename)
+		file.close
+	end
 end
 
 def file_contents datestring

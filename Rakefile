@@ -35,5 +35,5 @@ def generate_posts
 end
 
 def generate_post filename
-	system "touch dailysketches.github.io/app/_posts/#{filename}.md"
+	system "touch dailysketches.github.io/app/_posts/#{filename}-sketch.md"
 end

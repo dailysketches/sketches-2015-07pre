@@ -48,7 +48,7 @@ def file_contents datestring
 ---
 layout: post
 title:  "Daily Sketch"
-date:   2015-04-19 20:38:09
+date:   #{datestring}
 ---
 ![Daily sketch](/img/sketches/#{datestring}.gif)
 

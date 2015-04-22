@@ -47,7 +47,7 @@ def file_contents datestring
 	<<-eos
 ---
 layout: post
-title:  "Daily Sketch"
+title:  "Sketch #{datestring}"
 date:   #{datestring}
 ---
 ![Daily sketch](/img/sketches/#{datestring}.gif)

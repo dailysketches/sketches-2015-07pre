@@ -35,5 +35,7 @@ def generate_posts
 end
 
 def generate_post filename
-	system "touch dailysketches.github.io/app/_posts/#{filename}-sketch.md"
+	file = open("dailysketches.github.io/app/_posts/#{filename}-sketch.md", 'w')
+	file.write('bla')
+	file.close
 end

@@ -51,11 +51,17 @@ title:  "Sketch #{datestring}"
 date:   #{datestring}
 ---
 ![Daily sketch](/sketches/openFrameworks/#{datestring}.gif)
-
-<pre>
-	<code class="cpp">
-		//Add code here
-	</code>
-</pre>
+<div class="code">
+	<ul>
+		<li><a href="{% post_url #{datestring}-sketch %}">permalink</a></li>
+		<li><a href="https://github.com/dailysketches/dailySketches/tree/master/sketches/#{datestring}">code</a></li>
+		<li><a href="#" class="snippet-button">snippet</a></li>
+	</ul>
+	<pre class="snippet">
+		<code class="cpp">void ofApp::draw() {
+	//Your code here
+}</code>
+	</pre>
+</div>
 eos
 end

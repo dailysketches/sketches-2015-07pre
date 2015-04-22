@@ -50,7 +50,7 @@ layout: post
 title:  "Sketch #{datestring}"
 date:   #{datestring}
 ---
-![Daily sketch](/img/sketches/#{datestring}.gif)
+![Daily sketch](/sketches/openFrameworks/#{datestring}.gif)
 
 <pre>
 	<code class="cpp">

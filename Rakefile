@@ -36,6 +36,23 @@ end
 
 def generate_post filename
 	file = open("dailysketches.github.io/app/_posts/#{filename}-sketch.md", 'w')
-	file.write('bla')
+	file.write(file_contents filename)
 	file.close
+end
+
+def file_contents datestring
+	<<-eos
+---
+layout: post
+title:  "Daily Sketch"
+date:   2015-04-19 20:38:09
+---
+![Daily sketch](/img/sketches/#{datestring}.gif)
+
+<pre>
+	<code class="cpp">
+		//Add code here
+	</code>
+</pre>
+eos
 end

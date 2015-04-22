@@ -1,7 +1,8 @@
 task :copy do
-    copy_templates
-    copy_sketches
-    copy_gifs
+	copy_templates
+	copy_sketches
+	copy_gifs
+	generate_posts
 end
 
 def copy_templates
@@ -20,4 +21,19 @@ def copy_gifs
 	system 'printf \'Copying GIFs... \''
 	system 'cp -f sketches/*/bin/data/*.gif dailysketches.github.io/app/img/sketches/'
 	system 'printf \'done.\n\''
+end
+
+def generate_posts
+	system 'printf \'Generating posts... \''
+	Dir.foreach 'dailysketches.github.io/app/img/sketches/' do |filename|
+		if filename.end_with? '.gif'
+			filename.slice! '.gif'
+			generate_post filename
+		end
+	end
+	system 'printf \'done.\n\''
+end
+
+def generate_post filename
+	system "touch dailysketches.github.io/app/_posts/#{filename}.md"
 end

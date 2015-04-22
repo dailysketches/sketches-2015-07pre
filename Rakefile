@@ -19,13 +19,13 @@ end
 
 def copy_gifs
 	system 'printf \'Copying GIFs... \''
-	system 'cp -f sketches/*/bin/data/*.gif dailysketches.github.io/app/img/sketches/'
+	system 'cp -f sketches/*/bin/data/*.gif dailysketches.github.io/app/sketches/openFrameworks/'
 	system 'printf \'done.\n\''
 end
 
 def generate_posts
 	system 'printf \'Generating posts... \''
-	Dir.foreach 'dailysketches.github.io/app/img/sketches/' do |filename|
+	Dir.foreach 'dailysketches.github.io/app/sketches/openFrameworks/' do |filename|
 		if filename.end_with? '.gif'
 			filename.slice! '.gif'
 			generate_post filename

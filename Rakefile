@@ -57,6 +57,7 @@ date:   #{datestring}
 		<li><a href="https://github.com/dailysketches/dailySketches/tree/master/sketches/#{datestring}">code</a></li>
 		<li><a href="#" class="snippet-button">snippet</a></li>
 	</ul>
+	<p>Description here</p>
 	<pre class="snippet">
 		<code class="cpp">void ofApp::draw() {
 	//Your code here

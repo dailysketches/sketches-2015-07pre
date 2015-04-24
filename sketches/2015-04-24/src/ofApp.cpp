@@ -28,7 +28,7 @@ void ofApp::drawAnim() {
         ofCircle(width * 0.5, height * 0.5, i * multiplier);
         ofCircle(width * 0.5, height * 0.5, i * (15 - multiplier));
     }
-    if(renderMode) {
+    if(!renderMode) {
         ofDrawBitmapString(ofToString(multiplier), 20, 20);
     }
 }

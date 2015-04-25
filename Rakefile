@@ -1,3 +1,5 @@
+$current_asset_dir = 'sketches-2015-04-22'
+
 task :copy do
 	copy_templates
 	copy_sketches
@@ -19,13 +21,13 @@ end
 
 def copy_gifs
 	system 'printf \'Copying GIFs... \''
-	system 'mv -f sketches/*/bin/data/*.gif dailysketches.github.io/app/sketches/openFrameworks/'
+	system "mv -f sketches/*/bin/data/*.gif assets/#$current_asset_dir/openFrameworks/"
 	system 'printf \'done.\n\''
 end
 
 def generate_posts
 	system 'printf \'Generating posts... \''
-	Dir.foreach 'dailysketches.github.io/app/sketches/openFrameworks/' do |filename|
+	Dir.foreach "assets/#$current_asset_dir/openFrameworks/" do |filename|
 		if filename.end_with? '.gif'
 			filename.slice! '.gif'
 			generate_post filename
@@ -50,7 +52,7 @@ layout: post
 title:  "Sketch #{datestring}"
 date:   #{datestring}
 ---
-![Daily sketch](/sketches/openFrameworks/#{datestring}.gif)
+![Daily sketch](https://github.com/dailysketches/#$current_asset_dir/blob/master/openFrameworks/#{datestring}.gif?raw=true)
 <div class="code">
 	<ul>
 		<li><a href="{% post_url #{datestring}-sketch %}">permalink</a></li>

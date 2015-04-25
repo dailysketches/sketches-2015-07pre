@@ -19,7 +19,7 @@ end
 
 def copy_gifs
 	system 'printf \'Copying GIFs... \''
-	system 'cp -f sketches/*/bin/data/*.gif dailysketches.github.io/app/sketches/openFrameworks/'
+	system 'mv -f sketches/*/bin/data/*.gif dailysketches.github.io/app/sketches/openFrameworks/'
 	system 'printf \'done.\n\''
 end
 

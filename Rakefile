@@ -59,9 +59,7 @@ date:   #{datestring}
 	</ul>
 	<p>Description here</p>
 	<pre class="snippet">
-		<code class="cpp">void ofApp::draw() {
-	//Your code here
-}</code>
+		<code class="cpp">Your code here</code>
 	</pre>
 </div>
 eos

@@ -19,17 +19,18 @@ void ofApp::setup(){
     //Gif render values
     renderMode = true;
     width = 500, height = 500;
-    duration = .03, colors = 256;
+    duration = .02, colors = 256;
     saveOnFrame = 20;
 
     filename = ofGetTimestampString("%Y-%m-%d") + ".gif";
-    framerate = renderMode ? 5 : 60;
+    framerate = renderMode ? 5 : 20;
     
     //Init
     ofSetFrameRate(framerate);
     ofSetWindowShape(width, height);
     gifEncoder.setup(width, height, duration, colors);
-    nowSaved = "";
+    renderingNow = false;
+    renderMessage = "";
     
     fbo.allocate(width, height, GL_RGB);
     fbo.begin();
@@ -48,16 +49,21 @@ void ofApp::draw(){
     fbo.begin();
     drawAnim();
     fbo.end();
-    captureFrame();
+    
+    if(!renderingNow) {
+        captureFrame();
+    }
+    
+    ofSetColor(255, 255, 255, 255);
     fbo.draw(0, 0);
     ofDrawBitmapString(
         "Recording to frame #" +
         ofToString(saveOnFrame) +
         " at " +
-        ofToString(framerate) +
+        ofToString(ofGetFrameRate()) +
         "fps...\nCurrent frame: " +
         ofToString(ofGetFrameNum()) +
-        "\n" + nowSaved,
+        "\n" + renderMessage,
         20, height - 50);
 }
 
@@ -67,9 +73,14 @@ void ofApp::captureFrame() {
                         pixels.getBitsPerPixel(), duration);
     
     if(ofGetFrameNum() == saveOnFrame) {
-        gifEncoder.save(filename);
-        nowSaved = "Now saved!";
+        renderGif();
     }
+}
+
+void ofApp::renderGif() {
+    renderingNow = true;
+    gifEncoder.save(filename);
+    renderMessage = "Now rendering";
 }
 
 void ofApp::exit(){

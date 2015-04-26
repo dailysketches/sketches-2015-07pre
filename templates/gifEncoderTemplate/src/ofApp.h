@@ -12,6 +12,7 @@ public:
     void updateAnim();
     void draw();
     void drawAnim();
+    void renderGif();
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -28,8 +29,8 @@ public:
 
     int width, height, colors, duration;
     int framerate, saveOnFrame;
-    string filename, nowSaved;
-    bool renderMode;
+    string filename, renderMessage;
+    bool renderMode, renderingNow;
 
     ofxGifEncoder gifEncoder;
     ofFbo fbo;

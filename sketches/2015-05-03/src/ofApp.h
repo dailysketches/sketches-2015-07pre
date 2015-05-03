@@ -45,5 +45,5 @@ public:
     
     vector<GradientShape> rings;
     int numShapes;
-    float endpoint, firstEndpoint, lastEndpoint, rotation, alpha;
+    float endpoint, firstEndpoint, lastEndpoint, rotation;
 };

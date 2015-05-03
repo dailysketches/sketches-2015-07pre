@@ -29,7 +29,6 @@ void ofApp::updateAnim(){
     float current = sin(ofGetFrameNum() * 0.16);
     endpoint = ofMap(current, -1, 1, 1257, 1263);
     rotation = ofMap(current, -1, 1, 0, 360);
-    alpha =    ofMap(current, -1, 1, 0, 255);
     
     for(int i = 0; i < rings.size(); i++) {
         if(i % 6 == 0) rings.at(i).rotateX(rotation);

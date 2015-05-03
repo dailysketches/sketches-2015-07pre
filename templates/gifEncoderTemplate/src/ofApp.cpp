@@ -78,9 +78,11 @@ void ofApp::captureFrame() {
 }
 
 void ofApp::renderGif() {
-    renderingNow = true;
-    gifEncoder.save(filename);
-    renderMessage = "Now rendering";
+    if(!renderingNow) {
+        renderingNow = true;
+        gifEncoder.save(filename);
+        renderMessage = "Now rendering";
+    }
 }
 
 void ofApp::exit(){

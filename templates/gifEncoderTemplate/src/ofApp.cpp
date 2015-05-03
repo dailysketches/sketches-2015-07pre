@@ -19,11 +19,11 @@ void ofApp::setup(){
     //Gif render values
     renderMode = true;
     width = 500, height = 500;
-    duration = .02, colors = 256;
-    saveOnFrame = 20;
+    duration = 0.2, colors = 256;
+    saveOnFrame = -1;
 
     filename = ofGetTimestampString("%Y-%m-%d") + ".gif";
-    framerate = renderMode ? 5 : 20;
+    framerate = renderMode ? 5 : 10;
     
     //Init
     ofSetFrameRate(framerate);

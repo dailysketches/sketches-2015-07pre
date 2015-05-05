@@ -30,7 +30,7 @@ public:
     int width, height, colors, duration;
     int framerate, saveOnFrame;
     string filename, renderMessage;
-    bool renderMode, renderingNow;
+    bool slowMode, renderingNow;
 
     ofxGifEncoder gifEncoder;
     ofFbo fbo;

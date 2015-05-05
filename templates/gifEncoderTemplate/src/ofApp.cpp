@@ -17,13 +17,13 @@ void ofApp::drawAnim() {
 /* This handles the setup and GIF rendering, etc */
 void ofApp::setup(){
     //Gif render values
-    renderMode = true;
+    slowMode = false;
     width = 500, height = 500;
     duration = 0.2, colors = 256;
     saveOnFrame = -1;
 
     filename = ofGetTimestampString("%Y-%m-%d") + ".gif";
-    framerate = renderMode ? 5 : 10;
+    framerate = slowMode ? 5 : 10;
     
     //Init
     ofSetFrameRate(framerate);

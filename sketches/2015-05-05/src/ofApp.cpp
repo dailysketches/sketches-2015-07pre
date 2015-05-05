@@ -29,8 +29,6 @@ void ofApp::setupAnim() {
         
         shapes.push_back(shapeLayer);
     }
-    
-    cout << shapes.size() << endl;
 
     for(int i = 0; i < shapes.size(); i++) {
         for(int j = 0; j < shapes.at(i).size(); j++) {

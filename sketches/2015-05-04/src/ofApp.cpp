@@ -81,7 +81,9 @@ void ofApp::updateAnim(){
 void ofApp::drawAnim() {
     ofBackground(0, 0, 0);
     ofEnableAlphaBlending();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     shapeSystem.draw();
+    ofDisableBlendMode();
     ofDisableAlphaBlending();
     
     if(ofGetFrameNum() == 68) {

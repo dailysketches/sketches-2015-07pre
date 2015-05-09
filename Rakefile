@@ -52,17 +52,17 @@ layout: post
 title:  "Sketch #{datestring}"
 date:   #{datestring}
 ---
-![Daily sketch](https://github.com/dailysketches/#$current_asset_dir/blob/master/openFrameworks/#{datestring}.gif?raw=true)
 <div class="code">
-	<ul>
+    <ul>
 		<li><a href="{% post_url #{datestring}-sketch %}">permalink</a></li>
 		<li><a href="https://github.com/dailysketches/dailySketches/tree/master/sketches/#{datestring}">code</a></li>
 		<li><a href="#" class="snippet-button">snippet</a></li>
 	</ul>
-	<p>Description here</p>
-	<pre class="snippet">
-		<code class="cpp">Your code here</code>
-	</pre>
+    <pre class="snippet">
+        <code class="cpp">Your code here</code>
+    </pre>
 </div>
+<p class="description">Description here</p>
+![Daily sketch](https://github.com/dailysketches/#$current_asset_dir/blob/master/openFrameworks/#{datestring}.gif?raw=true)
 eos
 end

@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8414FCF11B055CFA00871DEF /* ofxLayerMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8414FCE81B055CFA00871DEF /* ofxLayerMask.cpp */; };
+		840E503A1B0AED7C002B0E35 /* ofxAnimatable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840E50321B0AED7C002B0E35 /* ofxAnimatable.cpp */; };
+		840E503B1B0AED7C002B0E35 /* ofxAnimatableFloat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840E50341B0AED7C002B0E35 /* ofxAnimatableFloat.cpp */; };
+		840E503C1B0AED7C002B0E35 /* ofxAnimatableOfColor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840E50361B0AED7C002B0E35 /* ofxAnimatableOfColor.cpp */; };
+		840E503D1B0AED7C002B0E35 /* ofxAnimatableOfPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840E50381B0AED7C002B0E35 /* ofxAnimatableOfPoint.cpp */; };
+		840E50491B0AED84002B0E35 /* ofxLayerMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 840E50401B0AED84002B0E35 /* ofxLayerMask.cpp */; };
 		A068255A4217EABB9A7301D7 /* ofxGifEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B072B1E5BDB34AF9421D936E /* ofxGifEncoder.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -64,15 +68,23 @@
 		186BEB137787E0F960C39A3D /* ofxGifDitherTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGifDitherTypes.h; path = ../../../addons/ofxGifEncoder/src/ofxGifDitherTypes.h; sourceTree = SOURCE_ROOT; };
 		7C82ED6ED521A4BE19F09B39 /* ofxGifEncoder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGifEncoder.h; path = ../../../addons/ofxGifEncoder/src/ofxGifEncoder.h; sourceTree = SOURCE_ROOT; };
 		839A8150769546864AECA7C6 /* ofxGifFrame.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGifFrame.h; path = ../../../addons/ofxGifEncoder/src/ofxGifFrame.h; sourceTree = SOURCE_ROOT; };
-		8414FCE81B055CFA00871DEF /* ofxLayerMask.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLayerMask.cpp; sourceTree = "<group>"; };
-		8414FCE91B055CFA00871DEF /* ofxLayerMask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxLayerMask.h; sourceTree = "<group>"; };
-		8414FCEB1B055CFA00871DEF /* alphaMask_ES2.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_ES2.frag; sourceTree = "<group>"; };
-		8414FCEC1B055CFA00871DEF /* alphaMask_ES2.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_ES2.vert; sourceTree = "<group>"; };
-		8414FCED1B055CFA00871DEF /* alphaMask_GL2.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL2.frag; sourceTree = "<group>"; };
-		8414FCEE1B055CFA00871DEF /* alphaMask_GL2.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL2.vert; sourceTree = "<group>"; };
-		8414FCEF1B055CFA00871DEF /* alphaMask_GL3.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL3.frag; sourceTree = "<group>"; };
-		8414FCF01B055CFA00871DEF /* alphaMask_GL3.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL3.vert; sourceTree = "<group>"; };
-		848C47B31B040EE40029747B /* 2015-05-15Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "2015-05-15Debug.app"; path = "2015-05-16Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		840E502F1B0AED0B002B0E35 /* gifEncoderTemplateDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = gifEncoderTemplateDebug.app; path = "2015-05-18Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		840E50321B0AED7C002B0E35 /* ofxAnimatable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAnimatable.cpp; sourceTree = "<group>"; };
+		840E50331B0AED7C002B0E35 /* ofxAnimatable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAnimatable.h; sourceTree = "<group>"; };
+		840E50341B0AED7C002B0E35 /* ofxAnimatableFloat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAnimatableFloat.cpp; sourceTree = "<group>"; };
+		840E50351B0AED7C002B0E35 /* ofxAnimatableFloat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAnimatableFloat.h; sourceTree = "<group>"; };
+		840E50361B0AED7C002B0E35 /* ofxAnimatableOfColor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAnimatableOfColor.cpp; sourceTree = "<group>"; };
+		840E50371B0AED7C002B0E35 /* ofxAnimatableOfColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAnimatableOfColor.h; sourceTree = "<group>"; };
+		840E50381B0AED7C002B0E35 /* ofxAnimatableOfPoint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAnimatableOfPoint.cpp; sourceTree = "<group>"; };
+		840E50391B0AED7C002B0E35 /* ofxAnimatableOfPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAnimatableOfPoint.h; sourceTree = "<group>"; };
+		840E50401B0AED84002B0E35 /* ofxLayerMask.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLayerMask.cpp; sourceTree = "<group>"; };
+		840E50411B0AED84002B0E35 /* ofxLayerMask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxLayerMask.h; sourceTree = "<group>"; };
+		840E50431B0AED84002B0E35 /* alphaMask_ES2.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_ES2.frag; sourceTree = "<group>"; };
+		840E50441B0AED84002B0E35 /* alphaMask_ES2.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_ES2.vert; sourceTree = "<group>"; };
+		840E50451B0AED84002B0E35 /* alphaMask_GL2.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL2.frag; sourceTree = "<group>"; };
+		840E50461B0AED84002B0E35 /* alphaMask_GL2.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL2.vert; sourceTree = "<group>"; };
+		840E50471B0AED84002B0E35 /* alphaMask_GL3.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL3.frag; sourceTree = "<group>"; };
+		840E50481B0AED84002B0E35 /* alphaMask_GL3.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL3.vert; sourceTree = "<group>"; };
 		B072B1E5BDB34AF9421D936E /* ofxGifEncoder.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxGifEncoder.cpp; path = ../../../addons/ofxGifEncoder/src/ofxGifEncoder.cpp; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -125,34 +137,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8414FCE61B055CFA00871DEF /* ofxLayerMask */ = {
+		840E50301B0AED7C002B0E35 /* ofxAnimatable */ = {
 			isa = PBXGroup;
 			children = (
-				8414FCE71B055CFA00871DEF /* src */,
+				840E50311B0AED7C002B0E35 /* src */,
+			);
+			name = ofxAnimatable;
+			sourceTree = "<group>";
+		};
+		840E50311B0AED7C002B0E35 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				840E50321B0AED7C002B0E35 /* ofxAnimatable.cpp */,
+				840E50331B0AED7C002B0E35 /* ofxAnimatable.h */,
+				840E50341B0AED7C002B0E35 /* ofxAnimatableFloat.cpp */,
+				840E50351B0AED7C002B0E35 /* ofxAnimatableFloat.h */,
+				840E50361B0AED7C002B0E35 /* ofxAnimatableOfColor.cpp */,
+				840E50371B0AED7C002B0E35 /* ofxAnimatableOfColor.h */,
+				840E50381B0AED7C002B0E35 /* ofxAnimatableOfPoint.cpp */,
+				840E50391B0AED7C002B0E35 /* ofxAnimatableOfPoint.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxAnimatable/src;
+			sourceTree = "<group>";
+		};
+		840E503E1B0AED84002B0E35 /* ofxLayerMask */ = {
+			isa = PBXGroup;
+			children = (
+				840E503F1B0AED84002B0E35 /* src */,
 			);
 			name = ofxLayerMask;
 			sourceTree = "<group>";
 		};
-		8414FCE71B055CFA00871DEF /* src */ = {
+		840E503F1B0AED84002B0E35 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				8414FCE81B055CFA00871DEF /* ofxLayerMask.cpp */,
-				8414FCE91B055CFA00871DEF /* ofxLayerMask.h */,
-				8414FCEA1B055CFA00871DEF /* shader */,
+				840E50401B0AED84002B0E35 /* ofxLayerMask.cpp */,
+				840E50411B0AED84002B0E35 /* ofxLayerMask.h */,
+				840E50421B0AED84002B0E35 /* shader */,
 			);
 			name = src;
 			path = ../../../addons/ofxLayerMask/src;
 			sourceTree = "<group>";
 		};
-		8414FCEA1B055CFA00871DEF /* shader */ = {
+		840E50421B0AED84002B0E35 /* shader */ = {
 			isa = PBXGroup;
 			children = (
-				8414FCEB1B055CFA00871DEF /* alphaMask_ES2.frag */,
-				8414FCEC1B055CFA00871DEF /* alphaMask_ES2.vert */,
-				8414FCED1B055CFA00871DEF /* alphaMask_GL2.frag */,
-				8414FCEE1B055CFA00871DEF /* alphaMask_GL2.vert */,
-				8414FCEF1B055CFA00871DEF /* alphaMask_GL3.frag */,
-				8414FCF01B055CFA00871DEF /* alphaMask_GL3.vert */,
+				840E50431B0AED84002B0E35 /* alphaMask_ES2.frag */,
+				840E50441B0AED84002B0E35 /* alphaMask_ES2.vert */,
+				840E50451B0AED84002B0E35 /* alphaMask_GL2.frag */,
+				840E50461B0AED84002B0E35 /* alphaMask_GL2.vert */,
+				840E50471B0AED84002B0E35 /* alphaMask_GL3.frag */,
+				840E50481B0AED84002B0E35 /* alphaMask_GL3.vert */,
 			);
 			path = shader;
 			sourceTree = "<group>";
@@ -168,7 +204,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				8414FCE61B055CFA00871DEF /* ofxLayerMask */,
+				840E503E1B0AED84002B0E35 /* ofxLayerMask */,
+				840E50301B0AED7C002B0E35 /* ofxAnimatable */,
 				9B798131E8584BCD510B255B /* ofxGifEncoder */,
 			);
 			name = addons;
@@ -229,7 +266,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				848C47B31B040EE40029747B /* 2015-05-15Debug.app */,
+				840E502F1B0AED0B002B0E35 /* gifEncoderTemplateDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -266,9 +303,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* 2015-05-16 */ = {
+		E4B69B5A0A3A1756003C02F2 /* 2015-05-18 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "2015-05-16" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "2015-05-18" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -280,9 +317,9 @@
 			dependencies = (
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = "2015-05-16";
+			name = "2015-05-18";
 			productName = myOFApp;
-			productReference = 848C47B31B040EE40029747B /* 2015-05-15Debug.app */;
+			productReference = 840E502F1B0AED0B002B0E35 /* gifEncoderTemplateDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -293,7 +330,7 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "2015-05-16" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "2015-05-18" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -314,7 +351,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* 2015-05-16 */,
+				E4B69B5A0A3A1756003C02F2 /* 2015-05-18 */,
 			);
 		};
 /* End PBXProject section */
@@ -351,9 +388,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				840E503A1B0AED7C002B0E35 /* ofxAnimatable.cpp in Sources */,
+				840E503C1B0AED7C002B0E35 /* ofxAnimatableOfColor.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				A068255A4217EABB9A7301D7 /* ofxGifEncoder.cpp in Sources */,
-				8414FCF11B055CFA00871DEF /* ofxLayerMask.cpp in Sources */,
+				840E503D1B0AED7C002B0E35 /* ofxAnimatableOfPoint.cpp in Sources */,
+				840E503B1B0AED7C002B0E35 /* ofxAnimatableFloat.cpp in Sources */,
+				840E50491B0AED84002B0E35 /* ofxLayerMask.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,7 +561,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
-				PRODUCT_NAME = "2015-05-16Debug";
+				PRODUCT_NAME = "2015-05-18Debug";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -606,7 +647,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
-				PRODUCT_NAME = "2015-05-16";
+				PRODUCT_NAME = "2015-05-18";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -615,7 +656,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "2015-05-16" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "2015-05-18" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -624,7 +665,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "2015-05-16" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "2015-05-18" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,

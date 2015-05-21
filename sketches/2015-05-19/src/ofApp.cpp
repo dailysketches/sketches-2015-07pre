@@ -11,11 +11,11 @@ void ofApp::setupAnim() {
     
     for(int i = 0; i < 40; i++) {
         ofxAnimatableFloat animHeight;
-        animHeight.reset(ofRandom(60));
+        animHeight.reset(ofRandom(90));
         heights.push_back(animHeight);
         
         ofxAnimatableFloat opacity;
-        opacity.reset(ofMap(i, 0, 300, 100, 255));
+        opacity.reset(ofMap(i, 0, 300, 120, 255));
         opacities.push_back(opacity);
         
         ofxAnimatableFloat target;
@@ -26,7 +26,7 @@ void ofApp::setupAnim() {
         position.reset(createDistinct(target.val()));
         position.setCurve(SWIFT_GOOGLE);
         position.setRepeatType(LOOP_BACK_AND_FORTH);
-        position.setDuration(ceil(ofRandom(2)) * 2);
+        position.setDuration(ceil(ofRandom(4)) * 0.5);
         position.animateTo(targets.at(i).val());
         positions.push_back(position);
     }
@@ -44,6 +44,8 @@ void ofApp::updateAnim(){
     
     masker.beginBackground();
     img1.draw(0, 0);
+    ofSetColor(ofColor(ofColor::black, 40));
+    ofRect(0, 0, width, height);
     masker.endBackground();
     
     masker.beginMask();
@@ -57,6 +59,8 @@ void ofApp::updateAnim(){
     
     masker.beginForeground();
     img2.draw(0, 0);
+    ofSetColor(ofColor(ofColor::black, 40));
+    ofRect(0, 0, width, height);
     masker.endForeground();
     
     ofDisableAlphaBlending();
@@ -66,7 +70,7 @@ void ofApp::drawAnim() {
     masker.draw();
     bool allFinished = true;
     for(int i = 0; i < positions.size(); i++) {
-        if(positions.at(i).getPlayCount() < 2) {
+        if(positions.at(i).getPlayCount() < 1) {
             allFinished = false;
         }
     }

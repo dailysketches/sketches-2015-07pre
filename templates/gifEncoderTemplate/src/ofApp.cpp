@@ -24,7 +24,9 @@ void ofApp::setup(){
 
     filename = ofGetTimestampString("%Y-%m-%d") + ".gif";
     framerate = slowMode ? 5 : 10;
-    
+    halfWidth = width * 0.5;
+    halfHeight = height * 0.5;
+
     //Init
     ofSetFrameRate(framerate);
     ofSetWindowShape(width, height);

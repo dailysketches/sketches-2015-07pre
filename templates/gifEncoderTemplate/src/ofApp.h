@@ -27,7 +27,7 @@ public:
     void exit();
     void captureFrame();
 
-    int width, height, colors, duration;
+    int width, height, halfWidth, halfHeight, colors, duration;
     int framerate, saveOnFrame;
     string filename, renderMessage;
     bool slowMode, renderingNow;

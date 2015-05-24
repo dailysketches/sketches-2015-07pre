@@ -68,7 +68,7 @@
 		186BEB137787E0F960C39A3D /* ofxGifDitherTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGifDitherTypes.h; path = ../../../addons/ofxGifEncoder/src/ofxGifDitherTypes.h; sourceTree = SOURCE_ROOT; };
 		7C82ED6ED521A4BE19F09B39 /* ofxGifEncoder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGifEncoder.h; path = ../../../addons/ofxGifEncoder/src/ofxGifEncoder.h; sourceTree = SOURCE_ROOT; };
 		839A8150769546864AECA7C6 /* ofxGifFrame.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGifFrame.h; path = ../../../addons/ofxGifEncoder/src/ofxGifFrame.h; sourceTree = SOURCE_ROOT; };
-		840E502F1B0AED0B002B0E35 /* 2015-05-21Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2015-05-21Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		840E502F1B0AED0B002B0E35 /* 2015-05-22Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2015-05-22Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		840E50321B0AED7C002B0E35 /* ofxAnimatable.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAnimatable.cpp; sourceTree = "<group>"; };
 		840E50331B0AED7C002B0E35 /* ofxAnimatable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxAnimatable.h; sourceTree = "<group>"; };
 		840E50341B0AED7C002B0E35 /* ofxAnimatableFloat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAnimatableFloat.cpp; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				840E502F1B0AED0B002B0E35 /* 2015-05-21Debug.app */,
+				840E502F1B0AED0B002B0E35 /* 2015-05-22Debug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,7 +319,7 @@
 			);
 			name = "2015-05-22";
 			productName = myOFApp;
-			productReference = 840E502F1B0AED0B002B0E35 /* 2015-05-21Debug.app */;
+			productReference = 840E502F1B0AED0B002B0E35 /* 2015-05-22Debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

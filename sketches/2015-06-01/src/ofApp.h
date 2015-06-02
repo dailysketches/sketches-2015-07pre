@@ -27,7 +27,8 @@ public:
     void gotMessage(ofMessage msg);
     
     ofxAudioUnitManager manager;
-    TALNoiseMakerChain chain1, chain2;
+    vector<TALNoiseMakerChain> chains;
+    TALNoiseMakerChain chain;
     ofxBpm bpm;
     bool playing;
     int note, currentChain;

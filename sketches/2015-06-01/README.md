@@ -1,8 +1,8 @@
-Sketch 2015-05-31
+Sketch 2015-06-01
 --
 This subfolder of the [dailySketches repo](https://github.com/dailysketches/dailySketches) is the root of an individual openFrameworks sketch. It contains the full source code used to generate this sketch:
 
-[Listen to the sketch on Daily Sketches](http://dailysketches.github.io/sketch-31-05-2015/)
+[Listen to the sketch on Daily Sketches](http://dailysketches.github.io/sketch-01-06-2015/)
 
 This source code is published automatically along with each sketch I add to [Daily Sketches](http://dailysketches.github.io).
 

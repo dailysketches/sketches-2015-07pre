@@ -18,6 +18,7 @@ void ofApp::drawAnim() {
 void ofApp::setup(){
     //Gif render values
     slowMode = false;
+    paused = false;
     width = 500, height = 500;
     duration = 0.2, colors = 256;
     saveOnFrame = -1;
@@ -52,7 +53,7 @@ void ofApp::draw(){
     drawAnim();
     fbo.end();
     
-    if(!renderingNow) {
+    if(!renderingNow && !paused) {
         captureFrame();
     }
     

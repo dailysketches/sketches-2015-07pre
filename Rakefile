@@ -2,13 +2,16 @@ require 'date'
 
 $current_asset_dir = 'sketches-2015-04-22'
 
+#api
 task :copy do
 	copy_templates
 	copy_sketches
 	copy_gifs
+	copy_mp3s
 	generate_files
 end
 
+#tasks
 def copy_templates
 	system 'printf \'Copying templates... \''
 	system 'cp -rf ../openFrameworks/versions/084/apps/dailySketchesTemplates/ templates'
@@ -27,42 +30,49 @@ def copy_gifs
 	system 'printf \'done.\n\''
 end
 
+def copy_mp3s
+	system 'printf \'Copying MP3s... \''
+	system "mv -f sketches/*/bin/data/*.mp3 assets/#$current_asset_dir/openFrameworks/"
+	system 'printf \'done.\n\''
+end
+
 def generate_files
 	system 'printf \'Generating files... \''
 	Dir.foreach "assets/#$current_asset_dir/openFrameworks/" do |filename|
 		if filename.end_with? '.gif'
 			filename.slice! '.gif'
-			generate_post filename
-			generate_readme filename
+			generate_post filename, 'gif'
+			generate_readme filename, 'gif'
+		end
+		if filename.end_with? '.mp3'
+			filename.slice! '.mp3'
+			generate_post filename, 'mp3'
+			generate_readme filename, 'mp3'
 		end
 	end
 	system 'printf \'done.\n\''
 end
 
-def generate_post datestring
+def generate_post datestring, ext
 	filepath = "dailysketches.github.io/app/_posts/#{datestring}-sketch.md"
 	unless File.exist?(filepath)
 		file = open(filepath, 'w')
-		file.write(post_file_contents datestring)
+		file.write(post_file_contents datestring, ext)
 		file.close
 	end
 end
 
-def generate_readme datestring
+def generate_readme datestring, ext
 	filepath = "sketches/#{datestring}/README.md"
 	unless File.exist?(filepath)
 		file = open(filepath, 'w')
-		file.write(readme_file_contents datestring)
+		file.write(readme_file_contents datestring, ext)
 		file.close
 	end
 end
 
-def reverse datestring
-	date = DateTime.parse(datestring)
-	date.strftime('%d-%m-%Y')
-end
-
-def post_file_contents datestring
+#string builders
+def post_file_contents datestring, ext
 	<<-eos
 ---
 layout: post
@@ -80,17 +90,17 @@ date:   #{datestring}
     </pre>
 </div>
 <p class="description">Description here</p>
-![Daily sketch](https://github.com/dailysketches/#$current_asset_dir/blob/master/openFrameworks/#{datestring}.gif?raw=true)
+#{ext == 'gif' ? render_post_gif(datestring) : render_post_mp3(datestring)}
 eos
 end
 
-def readme_file_contents datestring
+def readme_file_contents datestring, ext
 	<<-eos
 Sketch #{datestring}
 --
 This subfolder of the [dailySketches repo](https://github.com/dailysketches/dailySketches) is the root of an individual openFrameworks sketch. It contains the full source code used to generate this sketch:
 
-![Sketch #{datestring}](https://github.com/dailysketches/#$current_asset_dir/blob/master/openFrameworks/#{datestring}.gif?raw=true)
+#{ext == 'gif' ? render_readme_gif(datestring) : render_readme_mp3(datestring)}
 
 This source code is published automatically along with each sketch I add to [Daily Sketches](http://dailysketches.github.io). Here is a [permalink to this sketch](http://dailysketches.github.io/sketch-#{reverse datestring}/) on the Daily Sketches site.
 
@@ -116,4 +126,35 @@ In that case you should clone the addon(s) at the most recent commit before the 
 
 Yes, openFrameworks could use a good equivalent of [bundler](http://bundler.io/). You should write one!
 eos
+end
+
+#string builder helpers
+def reverse datestring
+	date = DateTime.parse(datestring)
+	date.strftime('%d-%m-%Y')
+end
+
+def raw_url datestring, ext
+	"https://github.com/dailysketches/#$current_asset_dir/blob/master/openFrameworks/#{datestring}.#{ext}?raw=true"
+end
+
+def render_post_gif datestring
+	"![Daily sketch](#{raw_url datestring, 'gif'})"
+end
+
+def render_post_mp3 datestring
+	<<-eos
+<audio controls>
+	<source src="#{raw_url datestring, 'mp3'}" type="audio/mpeg">
+	Your browser does not support the audio element.
+</audio>
+eos
+end
+
+def render_readme_gif datestring
+	"![Sketch #{datestring}](#{raw_url datestring, 'gif'})"
+end
+
+def render_readme_mp3 datestring
+	"[Listen to the sketch on Daily Sketches](http://dailysketches.github.io/sketch-#{reverse datestring}/)"
 end

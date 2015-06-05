@@ -1,5 +1,7 @@
 #include "ofApp.h"
 
+//Pattern based on http://www.openprocessing.org/sketch/157035
+
 /* This draws the animation */
 void ofApp::setupAnim() {
     masker.setup(width, height);

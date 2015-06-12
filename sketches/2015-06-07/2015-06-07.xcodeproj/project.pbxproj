@@ -63,7 +63,7 @@
 		186BEB137787E0F960C39A3D /* ofxGifDitherTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGifDitherTypes.h; path = ../../../addons/ofxGifEncoder/src/ofxGifDitherTypes.h; sourceTree = SOURCE_ROOT; };
 		7C82ED6ED521A4BE19F09B39 /* ofxGifEncoder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGifEncoder.h; path = ../../../addons/ofxGifEncoder/src/ofxGifEncoder.h; sourceTree = SOURCE_ROOT; };
 		839A8150769546864AECA7C6 /* ofxGifFrame.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGifFrame.h; path = ../../../addons/ofxGifEncoder/src/ofxGifFrame.h; sourceTree = SOURCE_ROOT; };
-		8477F8C71B12708800A43211 /* gifEncoderTemplateDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gifEncoderTemplateDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8477F8C71B12708800A43211 /* 2015-06-07Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2015-06-07Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B072B1E5BDB34AF9421D936E /* ofxGifEncoder.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxGifEncoder.cpp; path = ../../../addons/ofxGifEncoder/src/ofxGifEncoder.cpp; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -187,7 +187,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				8477F8C71B12708800A43211 /* gifEncoderTemplateDebug.app */,
+				8477F8C71B12708800A43211 /* 2015-06-07Debug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,7 +240,7 @@
 			);
 			name = "2015-06-07";
 			productName = myOFApp;
-			productReference = 8477F8C71B12708800A43211 /* gifEncoderTemplateDebug.app */;
+			productReference = 8477F8C71B12708800A43211 /* 2015-06-07Debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

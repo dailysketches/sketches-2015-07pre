@@ -72,7 +72,7 @@
 		8402D3021B2158F300C8F0CC /* alphaMask_GL2.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL2.vert; sourceTree = "<group>"; };
 		8402D3031B2158F300C8F0CC /* alphaMask_GL3.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL3.frag; sourceTree = "<group>"; };
 		8402D3041B2158F300C8F0CC /* alphaMask_GL3.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = alphaMask_GL3.vert; sourceTree = "<group>"; };
-		8477F8C71B12708800A43211 /* gifEncoderTemplateDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = gifEncoderTemplateDebug.app; path = "2015-06-04Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8477F8C71B12708800A43211 /* 2015-06-04Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2015-06-04Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B072B1E5BDB34AF9421D936E /* ofxGifEncoder.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxGifEncoder.cpp; path = ../../../addons/ofxGifEncoder/src/ofxGifEncoder.cpp; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -229,7 +229,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				8477F8C71B12708800A43211 /* gifEncoderTemplateDebug.app */,
+				8477F8C71B12708800A43211 /* 2015-06-04Debug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -282,7 +282,7 @@
 			);
 			name = "2015-06-04";
 			productName = myOFApp;
-			productReference = 8477F8C71B12708800A43211 /* gifEncoderTemplateDebug.app */;
+			productReference = 8477F8C71B12708800A43211 /* 2015-06-04Debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

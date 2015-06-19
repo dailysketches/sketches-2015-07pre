@@ -1,0 +1,110 @@
+<positions>
+    <element name="bangs">
+        <x>0.000000000</x>
+        <y>52.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="colors">
+        <x>0.000000000</x>
+        <y>372.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="curves">
+        <x>0.000000000</x>
+        <y>116.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="flags">
+        <x>0.000000000</x>
+        <y>244.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-1-alpha">
+        <x>0.000000000</x>
+        <y>52.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-1-scale">
+        <x>0.000000000</x>
+        <y>244.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-1-x">
+        <x>0.000000000</x>
+        <y>620.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-1-y">
+        <x>0.000000000</x>
+        <y>684.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-2-alpha">
+        <x>0.000000000</x>
+        <y>116.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-2-scale">
+        <x>0.000000000</x>
+        <y>308.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-2-x">
+        <x>0.000000000</x>
+        <y>748.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-2-y">
+        <x>0.000000000</x>
+        <y>812.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-3-alpha">
+        <x>0.000000000</x>
+        <y>180.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-3-scale">
+        <x>0.000000000</x>
+        <y>372.000000000</y>
+        <width>1080.000000000</width>
+        <height>224.000000000</height>
+    </element>
+    <element name="layer-3-x">
+        <x>0.000000000</x>
+        <y>876.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="layer-3-y">
+        <x>0.000000000</x>
+        <y>940.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="lfo">
+        <x>0.000000000</x>
+        <y>308.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="switches">
+        <x>0.000000000</x>
+        <y>180.000000000</y>
+        <width>1080.000000000</width>
+        <height>40.000000000</height>
+    </element>
+</positions>

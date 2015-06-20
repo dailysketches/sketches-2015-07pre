@@ -48,24 +48,15 @@ void ofApp::setup(){
     //Gif render values
     slowMode = false;
     paused = false;
-    fullscreen = true;
-    ofSetFullscreen(fullscreen);
-    ofSetFullscreen(false);
-    ofSetFullscreen(fullscreen);
-    width = 500, height = 500;
-    duration = 0.2, colors = 256;
+    fullscreen = false;
+    width = 500, height = 500, padding = 10;
+    duration = 0.2, colors = 256, numFrames = 50;
     saveOnFrame = -1;
 
     filename = ofGetTimestampString("%Y-%m-%d") + ".gif";
     framerate = slowMode ? 5 : 10;
     halfWidth = width * 0.5;
     halfHeight = height * 0.5;
-
-    //Timeline values
-    timeline.setup();
-    timeline.setFrameBased(true);
-    timeline.setWidth(ofGetWidth() - width - 100);
-    showTimeline = true;
 
     //Init
     ofSetFrameRate(framerate);
@@ -79,6 +70,13 @@ void ofApp::setup(){
     fbo.begin();
     ofClear(255, 255, 255, 0);
     fbo.end();
+    
+    //Timeline values
+    timeline.setup();
+    timeline.setFrameBased(true);
+    timeline.setDurationInFrames(numFrames);
+    timeline.setWidth(ofGetWidth() - width - 100);
+    showTimeline = true;
 
     //Begin patch
     setupAnim();
@@ -86,6 +84,7 @@ void ofApp::setup(){
 
 void ofApp::update(){
     ofSetFullscreen(fullscreen);
+    timeline.setWidth(ofGetWidth() - width - padding);
     updateAnim();
 }
 

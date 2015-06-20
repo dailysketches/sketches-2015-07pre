@@ -28,8 +28,8 @@ public:
     void exit();
     void captureFrame();
 
-    int width, height, halfWidth, halfHeight, colors, duration;
-    int framerate, saveOnFrame;
+    int width, height, halfWidth, halfHeight, padding, colors, duration;
+    int framerate, saveOnFrame, numFrames;
     string filename, renderMessage;
     bool slowMode, renderingNow, paused, fullscreen, showTimeline;
 

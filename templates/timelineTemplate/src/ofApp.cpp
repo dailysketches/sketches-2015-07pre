@@ -73,6 +73,9 @@ void ofApp::setup(){
     
     //Timeline values
     timeline.setup();
+    //timeline.setWorkingFolder("Timeline");
+    //timeline.loadTracksFromFolder("Timeline");
+    //https://github.com/YCAMInterlab/ofxTimeline/issues/105
     timeline.setFrameBased(true);
     timeline.setDurationInFrames(numFrames);
     timeline.setWidth(ofGetWidth() - width - 100);

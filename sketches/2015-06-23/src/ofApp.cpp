@@ -62,6 +62,7 @@ void ofApp::drawAnim() {
     }
     ofBackground(ofColor::black);
     masker.drawLayer(topLayer);
+    
     masker.drawOverlay();
     if(ofGetFrameNum() == spacing + (spacing / increment)) {
         renderGif();

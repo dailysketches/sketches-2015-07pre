@@ -3,33 +3,38 @@
 void ofApp::setup(){
     manager.setup();
     manager.toggleDebugUI();
-    manager.add(&talChain, "tal-one", ofColor::blue);
+    manager.add(&chain, "tal-one", ofColor::blue);
+
+    chain.link(&noiseMaker)
+         .to(&filter)
+         .to(&reverb)
+         .toMixer();
+
+    manager.loadPresets(&chain);
 
     playing = false;
     note = 60;
-    
+
     ofAddListener(bpm.beatEvent, this, &ofApp::play);
     bpm.start();
 }
 
 void ofApp::play(void){
     if(playing) {
-        talChain.midi()->sendNoteOn(1, note);
+        chain.midi()->sendNoteOn(1, note);
     }
 }
 
 void ofApp::togglePlaying() {
     playing = !playing;
     if(!playing) {
-        talChain.midi()->sendNoteOff(1, note);
+        chain.midi()->sendNoteOff(1, note);
     }
 }
 
 void ofApp::update(){
-    manager.update();
-
     lfo2Rate = ofMap(sin(ofGetFrameNum() * 0.03), -1, 1, 0.4, 0.6);
-    talChain.getSynth()->set(TALNoiseMaker_lfo2rate, lfo2Rate);
+    noiseMaker.set(TALNoiseMaker_lfo2rate, lfo2Rate);
 }
 
 void ofApp::draw(){

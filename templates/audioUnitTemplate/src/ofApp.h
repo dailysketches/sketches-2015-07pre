@@ -3,8 +3,10 @@
 #include "ofMain.h"
 #include "ofxBpm.h"
 #include "ofxAudioUnit.h"
-#include "TALNoiseMakerChain.h"
 #include "ofxAudioUnitManager.h"
+#include "TALNoiseMaker.h"
+#include "LowPassFilter.h"
+#include "Reverb.h"
 
 class ofApp : public ofBaseApp{
     
@@ -27,10 +29,14 @@ public:
     void gotMessage(ofMessage msg);
     
     ofxAudioUnitManager manager;
-    TALNoiseMakerChain talChain;
+    AudioUnitChain chain;
+    TALNoiseMaker noiseMaker;
+    LowPassFilter filter;
+    Reverb reverb;
+
     ofxBpm bpm;
     bool playing;
     int note;
-    
+
     float lfo2Rate, envEditorAmount;
 };

@@ -19,19 +19,21 @@ void ofApp::setupAudioUnits() {
 
 void ofApp::setupTimeline() {
     timeline.setup();
-    timeline.setLoopType(OF_LOOP_NONE);
-    timeline.setDurationInSeconds(10);
+    timeline.setLoopType(OF_LOOP_NORMAL);
+    timeline.setDurationInSeconds(30);
     timeline.setOffset(ofVec2f(10, 450));
     timeline.setWidth(ofGetWidth() - 400);
-    timeline.addBangs("midi");
-    timeline.addCurves("lfo rate", ofRange(0.03, 0.2));
-    timeline.addCurves("filter cutoff", ofRange(0, 1));
+    timeline.addCurves("osc crush bits", ofRange(0, 1));
+    timeline.addCurves("delay wet", ofRange(0, 1));
+    timeline.addCurves("delay time", ofRange(0, 1));
+    timeline.addBangs("midi events");
     ofAddListener(timeline.events().bangFired, this, &ofApp::bang);
 }
 
 void ofApp::update(){
-    noiseMaker.set(TALNoiseMaker_lfo2rate, timeline.getValue("lfo rate"));
-    noiseMaker.set(TALNoiseMaker_cutoff, timeline.getValue("filter cutoff"));
+    noiseMaker.set(TALNoiseMaker_oscbitcrusher, timeline.getValue("osc crush bits"));
+    noiseMaker.set(TALNoiseMaker_delaywet, timeline.getValue("delay wet"));
+    noiseMaker.set(TALNoiseMaker_delaytime, timeline.getValue("delay time"));
 }
 
 void ofApp::bang(ofxTLBangEventArgs &args) {

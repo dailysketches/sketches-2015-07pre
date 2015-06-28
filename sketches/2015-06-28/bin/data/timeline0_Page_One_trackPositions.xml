@@ -1,0 +1,32 @@
+<positions>
+    <element name="envelope amount (x8)">
+        <x>10.000000000</x>
+        <y>630.000000000</y>
+        <width>600.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="lfo 2 rate">
+        <x>10.000000000</x>
+        <y>694.000000000</y>
+        <width>600.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="master osc 1 (pulse)">
+        <x>10.000000000</x>
+        <y>502.000000000</y>
+        <width>600.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="master osc 2 (triangle)">
+        <x>10.000000000</x>
+        <y>566.000000000</y>
+        <width>600.000000000</width>
+        <height>40.000000000</height>
+    </element>
+    <element name="midi events">
+        <x>10.000000000</x>
+        <y>758.000000000</y>
+        <width>600.000000000</width>
+        <height>40.000000000</height>
+    </element>
+</positions>

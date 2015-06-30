@@ -1,18 +1,14 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxGifEncoder.h"
+#include "ofxGifEncoderTemplate.h"
 
 class ofApp : public ofBaseApp{
 
 public:
     void setup();
-    void setupAnim();
     void update();
-    void updateAnim();
     void draw();
-    void drawAnim();
-    void renderGif();
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -24,15 +20,5 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-    void exit();
-    void captureFrame();
-
-    int width, height, halfWidth, halfHeight, colors, duration;
-    int framerate, saveOnFrame;
-    string filename, renderMessage;
-    bool slowMode, renderingNow, paused;
-
-    ofxGifEncoder gifEncoder;
-    ofFbo fbo;
-    ofPixels pixels;
+    ofxGifEncoderTemplate gif;
 };

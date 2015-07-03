@@ -1,0 +1,52 @@
+<keyframes>
+    <key>
+        <flag>36 ON</flag>
+        <time>00:00:00:000</time>
+        <value>0.574999988</value>
+    </key>
+    <key>
+        <flag>36 OFF</flag>
+        <time>00:00:04:000</time>
+        <value>0.449999988</value>
+    </key>
+    <key>
+        <flag>28 ON</flag>
+        <time>00:00:06:000</time>
+        <value>0.550000012</value>
+    </key>
+    <key>
+        <flag>28 OFF</flag>
+        <time>00:00:10:000</time>
+        <value>0.199999988</value>
+    </key>
+    <key>
+        <flag>31 ON</flag>
+        <time>00:00:12:000</time>
+        <value>0.475000024</value>
+    </key>
+    <key>
+        <flag>31 OFF</flag>
+        <time>00:00:16:000</time>
+        <value>0.399999976</value>
+    </key>
+    <key>
+        <flag>36 ON</flag>
+        <time>00:00:18:000</time>
+        <value>0.574999988</value>
+    </key>
+    <key>
+        <flag>36 OFF</flag>
+        <time>00:00:22:000</time>
+        <value>0.449999988</value>
+    </key>
+    <key>
+        <flag>28 ON</flag>
+        <time>00:00:24:000</time>
+        <value>0.550000012</value>
+    </key>
+    <key>
+        <flag>28 OFF</flag>
+        <time>00:00:28:000</time>
+        <value>0.199999988</value>
+    </key>
+</keyframes>

@@ -66,7 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		840010671B423860008161E1 /* 2015-06-30Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2015-06-30Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		840010671B423860008161E1 /* 2015-07-01Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2015-07-01Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8400106A1B4239A9008161E1 /* ofxShape.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxShape.cpp; sourceTree = "<group>"; };
 		8400106B1B4239A9008161E1 /* ofxShape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxShape.h; sourceTree = "<group>"; };
 		8400106C1B4239A9008161E1 /* ofxShapeSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxShapeSystem.cpp; sourceTree = "<group>"; };
@@ -317,7 +317,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				840010671B423860008161E1 /* 2015-06-30Debug.app */,
+				840010671B423860008161E1 /* 2015-07-01Debug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -359,7 +359,7 @@
 			);
 			name = "2015-07-01";
 			productName = myOFApp;
-			productReference = 840010671B423860008161E1 /* 2015-06-30Debug.app */;
+			productReference = 840010671B423860008161E1 /* 2015-07-01Debug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

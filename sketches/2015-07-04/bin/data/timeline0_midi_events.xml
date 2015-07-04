@@ -1,0 +1,82 @@
+<keyframes>
+    <key>
+        <flag>G#4 ON</flag>
+        <time>00:00:00:000</time>
+        <value>0.574999988</value>
+    </key>
+    <key>
+        <flag>G#4 OFF</flag>
+        <time>00:00:02:500</time>
+        <value>0.449999988</value>
+    </key>
+    <key>
+        <flag>A#4 ON</flag>
+        <time>00:00:03:000</time>
+        <value>0.550000012</value>
+    </key>
+    <key>
+        <flag>A#4 OFF</flag>
+        <time>00:00:05:500</time>
+        <value>0.199999988</value>
+    </key>
+    <key>
+        <flag>D#4 ON</flag>
+        <time>00:00:06:000</time>
+        <value>0.475000024</value>
+    </key>
+    <key>
+        <flag>D#4 OFF</flag>
+        <time>00:00:08:500</time>
+        <value>0.399999976</value>
+    </key>
+    <key>
+        <flag>A#4 ON</flag>
+        <time>00:00:09:000</time>
+        <value>0.574999988</value>
+    </key>
+    <key>
+        <flag>A#4 OFF</flag>
+        <time>00:00:11:500</time>
+        <value>0.574999988</value>
+    </key>
+    <key>
+        <flag>G#4 ON</flag>
+        <time>00:00:14:000</time>
+        <value>0.574999988</value>
+    </key>
+    <key>
+        <flag>G#4 OFF</flag>
+        <time>00:00:16:500</time>
+        <value>0.449999988</value>
+    </key>
+    <key>
+        <flag>A#4 ON</flag>
+        <time>00:00:17:000</time>
+        <value>0.550000012</value>
+    </key>
+    <key>
+        <flag>A#4 OFF</flag>
+        <time>00:00:19:500</time>
+        <value>0.199999988</value>
+    </key>
+    <key>
+        <flag>D#4 ON</flag>
+        <time>00:00:20:000</time>
+        <value>0.475000024</value>
+    </key>
+    <key>
+        <flag>D#4 OFF</flag>
+        <time>00:00:22:500</time>
+        <value>0.399999976</value>
+    </key>
+    <key>
+        <flag>A#4 ON</flag>
+        <time>00:00:23:000</time>
+        <value>0.574999988</value>
+    </key>
+    <key>
+        <flag>A#4 OFF</flag>
+        <time>00:00:29:000</time>
+        <value>0.574999988</value>
+    </key>
+</keyframes>

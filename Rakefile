@@ -12,24 +12,31 @@ end
 
 #tasks
 def copy_templates
+	starttime = Time.now
 	system 'printf \'Copying openFrameworks templates... \''
 	system 'rsync -ru ../openFrameworks/versions/084/apps/dailySketchesTemplates/ templates'
-	system 'printf \'done.\n\''
+	endtime = Time.now
+	system "printf \'completed in #{endtime - starttime} seconds.\n\'"
 end
 
 def copy_sketches
+	starttime = Time.now
 	system 'printf \'Copying openFrameworks sketches... \''
 	system 'rsync -ru ../openFrameworks/versions/084/apps/dailySketches/ sketches'
-	system 'printf \'done.\n\''
+	endtime = Time.now
+	system "printf \'completed in #{endtime - starttime} seconds.\n\'"
 end
 
 def copy_media
+	starttime = Time.now
 	system 'printf \'Copying generated openFrameworks media... \''
 	system "mv -f sketches/*/bin/data/out/* assets/#$current_asset_dir/openFrameworks/"
-	system 'printf \'done.\n\''
+	endtime = Time.now
+	system "printf \'completed in #{endtime - starttime} seconds.\n\'"
 end
 
 def generate_files
+	starttime = Time.now
 	system 'printf \'Generating jekyll post files... \''
 	Dir.foreach "assets/#$current_asset_dir/openFrameworks/" do |filename|
 		if filename.end_with? '.gif'
@@ -43,7 +50,8 @@ def generate_files
 			generate_readme filename, 'mp3'
 		end
 	end
-	system 'printf \'done.\n\''
+	endtime = Time.now
+	system "printf \'completed in #{endtime - starttime} seconds.\n\'"
 end
 
 def generate_post datestring, ext

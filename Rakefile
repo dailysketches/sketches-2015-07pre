@@ -145,11 +145,13 @@ end
 
 def render_post_mp3 datestring
 	<<-eos
-![Sketch #{datestring}](#{raw_url datestring, 'png'})
-<audio controls>
-	<source src="#{raw_url datestring, 'mp3'}" type="audio/mpeg">
-	Your browser does not support the audio element.
-</audio>
+<p>
+	<img src="#{raw_url datestring, 'png'}" alt="Sketch #{datestring}">
+	<audio controls>
+		<source src="#{raw_url datestring, 'mp3'}" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+</p>
 eos
 end
 

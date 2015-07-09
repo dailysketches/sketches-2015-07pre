@@ -12,25 +12,25 @@ end
 
 #tasks
 def copy_templates
-	system 'printf \'Copying templates... \''
+	system 'printf \'Copying openFrameworks templates... \''
 	system 'rsync -ru ../openFrameworks/versions/084/apps/dailySketchesTemplates/ templates'
 	system 'printf \'done.\n\''
 end
 
 def copy_sketches
-	system 'printf \'Copying sketches... \''
+	system 'printf \'Copying openFrameworks sketches... \''
 	system 'rsync -ru ../openFrameworks/versions/084/apps/dailySketches/ sketches'
 	system 'printf \'done.\n\''
 end
 
 def copy_media
-	system 'printf \'Copying generated sketch media... \''
+	system 'printf \'Copying generated openFrameworks media... \''
 	system "mv -f sketches/*/bin/data/out/* assets/#$current_asset_dir/openFrameworks/"
 	system 'printf \'done.\n\''
 end
 
 def generate_files
-	system 'printf \'Generating files... \''
+	system 'printf \'Generating jekyll post files... \''
 	Dir.foreach "assets/#$current_asset_dir/openFrameworks/" do |filename|
 		if filename.end_with? '.gif'
 			filename.slice! '.gif'

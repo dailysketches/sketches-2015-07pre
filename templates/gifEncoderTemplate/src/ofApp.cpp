@@ -2,7 +2,7 @@
 
 void ofApp::setup(){
     ofSetWindowShape(500, 500);
-    gif.setup(ofGetTimestampString("%Y-%m-%d"), 12);
+    gif.setup(ofGetTimestampString("out/%Y-%m-%d"), 12);
 }
 
 void ofApp::update(){

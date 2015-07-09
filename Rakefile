@@ -6,8 +6,7 @@ $current_asset_dir = 'sketches-2015-04-22'
 task :copy do
 	copy_templates
 	copy_sketches
-	copy_gifs
-	copy_mp3s
+	copy_media
 	generate_files
 end
 
@@ -24,15 +23,9 @@ def copy_sketches
 	system 'printf \'done.\n\''
 end
 
-def copy_gifs
-	system 'printf \'Copying GIFs... \''
-	system "mv -f sketches/*/bin/data/*.gif assets/#$current_asset_dir/openFrameworks/"
-	system 'printf \'done.\n\''
-end
-
-def copy_mp3s
-	system 'printf \'Copying MP3s... \''
-	system "mv -f sketches/*/bin/data/*.mp3 assets/#$current_asset_dir/openFrameworks/"
+def copy_media
+	system 'printf \'Copying generated sketch media... \''
+	system "mv -f sketches/*/bin/data/out/* assets/#$current_asset_dir/openFrameworks/"
 	system 'printf \'done.\n\''
 end
 
@@ -144,6 +137,7 @@ end
 
 def render_post_mp3 datestring
 	<<-eos
+![Sketch #{datestring}](#{raw_url datestring, 'png'})
 <audio controls>
 	<source src="#{raw_url datestring, 'mp3'}" type="audio/mpeg">
 	Your browser does not support the audio element.
@@ -156,5 +150,8 @@ def render_readme_gif datestring
 end
 
 def render_readme_mp3 datestring
-	"[Listen to the sketch on Daily Sketches](http://dailysketches.github.io/sketch-#{reverse datestring}/)"
+	<<-eos
+![Sketch #{datestring}](#{raw_url datestring, 'png'})
+[Listen to the sketch on Daily Sketches](http://dailysketches.github.io/sketch-#{reverse datestring}/)"
+eos
 end

@@ -13,13 +13,13 @@ end
 #tasks
 def copy_templates
 	system 'printf \'Copying templates... \''
-	system 'cp -rf ../openFrameworks/versions/084/apps/dailySketchesTemplates/ templates'
+	system 'rsync -ru ../openFrameworks/versions/084/apps/dailySketchesTemplates/ templates'
 	system 'printf \'done.\n\''
 end
 
 def copy_sketches
 	system 'printf \'Copying sketches... \''
-	system 'cp -rf ../openFrameworks/versions/084/apps/dailySketches/ sketches'
+	system 'rsync -ru ../openFrameworks/versions/084/apps/dailySketches/ sketches'
 	system 'printf \'done.\n\''
 end
 

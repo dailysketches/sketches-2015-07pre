@@ -1,4 +1,6 @@
-require 'date' 
+require 'date'
+require 'erb'
+include ERB::Util
 
 $current_asset_dir = 'sketches-2015-04-22'
 
@@ -87,7 +89,7 @@ date:   #{datestring}
 		<li><a href="#" class="snippet-button">snippet</a></li>
 	</ul>
     <pre class="snippet">
-        <code class="cpp">Your code here</code>
+        <code class="cpp">#{get_code(datestring)}</code>
     </pre>
 </div>
 <p class="description">Description here</p>
@@ -127,6 +129,20 @@ In that case you should clone the addon(s) at the most recent commit before the 
 
 Yes, openFrameworks could use a good equivalent of [bundler](http://bundler.io/). You should write one!
 eos
+end
+
+def get_code datestring
+	filepath = "sketches/#{datestring}/src/ofApp.cpp"
+	if File.exist?(filepath)
+		file = open(filepath, 'r')
+		contents = file.read
+		file.close
+		contents = contents[/\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m, 1]
+		html_escape(contents.strip.chomp('\n'))
+	else
+		system "printf \'\nCouldn't get code for sketch #{datestring}\'"
+		'Your code here'
+	end
 end
 
 #string builder helpers

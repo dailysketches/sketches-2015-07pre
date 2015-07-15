@@ -92,7 +92,7 @@ date:   #{datestring}
         <code class="cpp">#{get_code(datestring)}</code>
     </pre>
 </div>
-<p class="description">Description here</p>
+<p class="description">#{get_description(datestring)}</p>
 #{ext == 'gif' ? render_post_gif(datestring) : render_post_mp3(datestring)}
 eos
 end
@@ -142,6 +142,20 @@ def get_code datestring
 	else
 		system "printf \'\nCouldn't get code for sketch #{datestring}\'"
 		'Your code here'
+	end
+end
+
+def get_description datestring
+	filepath = "sketches/#{datestring}/src/ofApp.cpp"
+	if File.exist?(filepath)
+		file = open(filepath, 'r')
+		contents = file.read
+		file.close
+		contents = contents[/\/\* Begin description\n\{(.*?)\}\nEnd description \*\//m, 1]
+		html_escape(contents.strip.chomp('\n'))
+	else
+		system "printf \'\nCouldn't get description for sketch #{datestring}\'"
+		'Description here'
 	end
 end
 

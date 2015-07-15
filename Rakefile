@@ -12,7 +12,24 @@ task :copy do
 	generate_files
 end
 
+task :status do
+	print_all_status
+end
+
+task :st do
+	print_all_status
+end
+
 #tasks
+def print_all_status
+	puts "Sketches status:\n================\n"
+	system "git status"
+	puts "\nAssets status:\n==============\n"
+	system "cd assets/#$current_asset_dir && git status && cd ../.."
+	puts "\nJekyll status:\n==============\n"
+	system "cd dailysketches.github.io && git status && cd .."
+end
+
 def copy_templates
 	starttime = Time.now
 	system 'printf \'Copying openFrameworks templates... \''

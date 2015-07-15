@@ -138,9 +138,14 @@ def get_code datestring
 		contents = file.read
 		file.close
 		contents = contents[/\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m, 1]
-		html_escape(contents.strip.chomp('\n'))
+		if contents == nil
+			system "printf \'\nWARNING: Cannot find code for sketch #{datestring}\n\'"
+			'Your code here'
+		else
+			html_escape(contents.strip.chomp('\n'))
+		end
 	else
-		system "printf \'\nWARNING: Couldn't get code for sketch #{datestring}\n\'"
+		system "printf \'\nWARNING: Cannot find ofApp.cpp file for sketch #{datestring}\n\'"
 		'Your code here'
 	end
 end
@@ -152,13 +157,17 @@ def get_description datestring
 		contents = file.read
 		file.close
 		contents = contents[/\/\* Begin description\n\{(.*?)\}\nEnd description \*\//m, 1]
-		contents = html_escape(contents.strip.chomp('\n'))
-		if contents == 'Write your description here'
-			system "printf \'\nWARNING: You have not written a description for sketch #{datestring}\n\'"
+		if contents == nil
+			system "printf \'\nWARNING: Cannot find description for sketch #{datestring}\n\'"
+			'Description here'
+		else
+			contents = html_escape(contents.strip.chomp('\n'))
+			if contents == 'Write your description here'
+				system "printf \'\nWARNING: You have not written a description for sketch #{datestring}\n\'"
+			end
+			contents
 		end
-		contents
 	else
-		system "printf \'\nWARNING: Couldn't get description for sketch #{datestring}\n\'"
 		'Description here'
 	end
 end

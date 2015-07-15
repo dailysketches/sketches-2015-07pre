@@ -140,7 +140,7 @@ def get_code datestring
 		contents = contents[/\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m, 1]
 		html_escape(contents.strip.chomp('\n'))
 	else
-		system "printf \'\nCouldn't get code for sketch #{datestring}\'"
+		system "printf \'\nWARNING: Couldn't get code for sketch #{datestring}\n\'"
 		'Your code here'
 	end
 end
@@ -152,9 +152,13 @@ def get_description datestring
 		contents = file.read
 		file.close
 		contents = contents[/\/\* Begin description\n\{(.*?)\}\nEnd description \*\//m, 1]
-		html_escape(contents.strip.chomp('\n'))
+		contents = html_escape(contents.strip.chomp('\n'))
+		if contents == 'Write your description here'
+			system "printf \'\nWARNING: You have not written a description for sketch #{datestring}\n\'"
+		end
+		contents
 	else
-		system "printf \'\nCouldn't get description for sketch #{datestring}\'"
+		system "printf \'\nWARNING: Couldn't get description for sketch #{datestring}\n\'"
 		'Description here'
 	end
 end

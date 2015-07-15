@@ -20,6 +20,19 @@ task :st do
 	print_all_status
 end
 
+task :deploy, :datestring do |t, args|
+	if(args[:datestring] == nil)
+		puts 'Usage: rake deploy[yyyy-mm-dd]'
+	else
+		datestring = args[:datestring].strip.chomp('\n')
+		if datestring == ''
+			puts 'Usage: rake deploy[yyyy-mm-dd]'
+		else
+			deploy_all datestring
+		end
+	end
+end
+
 #tasks
 def print_all_status
 	puts "Sketches status:\n================\n"
@@ -28,6 +41,19 @@ def print_all_status
 	system "cd assets/#$current_asset_dir && git status && cd ../.."
 	puts "\nJekyll status:\n==============\n"
 	system "cd dailysketches.github.io && git status && cd .."
+end
+
+def deploy_all datestring
+	puts "Deploying sketch:\n=================\n"
+	system "git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
+	puts "Deploying assets:\n=================\n"
+	system "cd assets/#$current_asset_dir"
+	system "git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
+	system "cd ../../"
+	puts "Deploying jekyll:\n=================\n"
+	system "cd dailysketches.github.io"
+	system "git add -A && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
+	system "cd ../"
 end
 
 def copy_templates

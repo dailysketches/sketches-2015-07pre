@@ -3,6 +3,7 @@ require 'erb'
 include ERB::Util
 
 $current_asset_dir = 'sketches-2015-04-22'
+$no_errors = true
 
 #api
 task :copy do
@@ -36,53 +37,53 @@ end
 #tasks
 def print_all_status
 	puts "Sketches status:\n================\n"
-	system "git status"
+	execute "git status"
 	puts "\nAssets status:\n==============\n"
-	system "cd assets/#$current_asset_dir && git status && cd ../.."
+	execute "cd assets/#$current_asset_dir && git status && cd ../.."
 	puts "\nJekyll status:\n==============\n"
-	system "cd dailysketches.github.io && git status && cd .."
+	execute "cd dailysketches.github.io && git status && cd .."
 end
 
 def deploy_all datestring
 	puts "Deploying sketch:\n=================\n"
-	system "git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
+	execute "git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
 	puts "Deploying assets:\n=================\n"
-	system "cd assets/#$current_asset_dir"
-	system "git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
-	system "cd ../../"
+	execute "cd assets/#$current_asset_dir"
+	execute "git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
+	execute "cd ../../"
 	puts "Deploying jekyll:\n=================\n"
-	system "cd dailysketches.github.io"
-	system "git add -A && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
-	system "cd ../"
+	execute "cd dailysketches.github.io"
+	execute "git add -A && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
+	execute "cd ../"
 end
 
 def copy_templates
 	starttime = Time.now
-	system 'printf \'Copying openFrameworks templates... \''
-	system 'rsync -ru ../openFrameworks/versions/084/apps/dailySketchesTemplates/ templates'
+	execute 'printf \'Copying openFrameworks templates... \''
+	execute 'rsync -ru ../openFrameworks/versions/084/apps/dailySketchesTemplates/ templates'
 	endtime = Time.now
-	system "printf \'completed in #{endtime - starttime} seconds.\n\'"
+	execute "printf \'completed in #{endtime - starttime} seconds.\n\'"
 end
 
 def copy_sketches
 	starttime = Time.now
-	system 'printf \'Copying openFrameworks sketches... \''
-	system 'rsync -ru ../openFrameworks/versions/084/apps/dailySketches/ sketches'
+	execute 'printf \'Copying openFrameworks sketches... \''
+	execute 'rsync -ru ../openFrameworks/versions/084/apps/dailySketches/ sketches'
 	endtime = Time.now
-	system "printf \'completed in #{endtime - starttime} seconds.\n\'"
+	execute "printf \'completed in #{endtime - starttime} seconds.\n\'"
 end
 
 def copy_media
 	starttime = Time.now
-	system 'printf \'Copying generated openFrameworks media... \''
-	system "mv -f sketches/*/bin/data/out/* assets/#$current_asset_dir/openFrameworks/"
+	execute 'printf \'Copying generated openFrameworks media... \''
+	execute "mv -f sketches/*/bin/data/out/* assets/#$current_asset_dir/openFrameworks/"
 	endtime = Time.now
-	system "printf \'completed in #{endtime - starttime} seconds.\n\'"
+	execute "printf \'completed in #{endtime - starttime} seconds.\n\'"
 end
 
 def generate_files
 	starttime = Time.now
-	system 'printf \'Generating jekyll post files... \''
+	execute 'printf \'Generating jekyll post files... \''
 	Dir.foreach "assets/#$current_asset_dir/openFrameworks/" do |filename|
 		if filename.end_with? '.gif'
 			filename.slice! '.gif'
@@ -96,7 +97,7 @@ def generate_files
 		end
 	end
 	endtime = Time.now
-	system "printf \'completed in #{endtime - starttime} seconds.\n\'"
+	execute "printf \'completed in #{endtime - starttime} seconds.\n\'"
 end
 
 def generate_post datestring, ext
@@ -114,6 +115,20 @@ def generate_readme datestring, ext
 		file = open(filepath, 'w')
 		file.write(readme_file_contents datestring, ext)
 		file.close
+	end
+end
+
+def execute commandstring
+	puts "\nExecuting command:"
+	puts "------------------"
+	puts "#{commandstring}\n"
+	if $no_errors
+		$no_errors = system commandstring
+		unless $no_errors
+			puts "\nEXECUTION ERROR. Subsequent commands will be ignored\n"
+		end
+	else
+		puts "\nEXECUTION SKIPPED due to previous error\n"
 	end
 end
 
@@ -182,13 +197,13 @@ def get_code datestring
 		file.close
 		contents = contents[/\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m, 1]
 		if contents == nil
-			system "printf \'\nWARNING: Cannot find code for sketch #{datestring}\n\'"
+			execute "printf \'\nWARNING: Cannot find code for sketch #{datestring}\n\'"
 			'Your code here'
 		else
 			html_escape(contents.strip.chomp('\n'))
 		end
 	else
-		system "printf \'\nWARNING: Cannot find ofApp.cpp file for sketch #{datestring}\n\'"
+		execute "printf \'\nWARNING: Cannot find ofApp.cpp file for sketch #{datestring}\n\'"
 		'Your code here'
 	end
 end
@@ -201,12 +216,12 @@ def get_description datestring
 		file.close
 		contents = contents[/\/\* Begin description\n\{(.*?)\}\nEnd description \*\//m, 1]
 		if contents == nil
-			system "printf \'\nWARNING: Cannot find description for sketch #{datestring}\n\'"
+			execute "printf \'\nWARNING: Cannot find description for sketch #{datestring}\n\'"
 			'Description here'
 		else
 			contents = html_escape(contents.strip.chomp('\n'))
 			if contents == 'Write your description here'
-				system "printf \'\nWARNING: You have not written a description for sketch #{datestring}\n\'"
+				execute "printf \'\nWARNING: You have not written a description for sketch #{datestring}\n\'"
 			end
 			contents
 		end

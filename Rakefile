@@ -48,42 +48,42 @@ def deploy_all datestring
 	puts "Deploying sketch:\n=================\n"
 	execute "git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
 	puts "Deploying assets:\n=================\n"
-	execute "cd assets/#$current_asset_dir"
+	execute_silent "cd assets/#$current_asset_dir"
 	execute "git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
-	execute "cd ../../"
+	execute_silent "cd ../../"
 	puts "Deploying jekyll:\n=================\n"
-	execute "cd dailysketches.github.io"
+	execute_silent "cd dailysketches.github.io"
 	execute "git add -A && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
-	execute "cd ../"
+	execute_silent "cd ../"
 end
 
 def copy_templates
 	starttime = Time.now
-	execute 'printf \'Copying openFrameworks templates... \''
-	execute 'rsync -ru ../openFrameworks/versions/084/apps/dailySketchesTemplates/ templates'
+	print "Copying openFrameworks templates... "
+	execute_silent 'rsync -ru ../openFrameworks/versions/084/apps/dailySketchesTemplates/ templates'
 	endtime = Time.now
-	execute "printf \'completed in #{endtime - starttime} seconds.\n\'"
+	print "completed in #{endtime - starttime} seconds.\n"
 end
 
 def copy_sketches
 	starttime = Time.now
-	execute 'printf \'Copying openFrameworks sketches... \''
-	execute 'rsync -ru ../openFrameworks/versions/084/apps/dailySketches/ sketches'
+	print "Copying openFrameworks sketches... "
+	execute_silent 'rsync -ru ../openFrameworks/versions/084/apps/dailySketches/ sketches'
 	endtime = Time.now
-	execute "printf \'completed in #{endtime - starttime} seconds.\n\'"
+	print "Completed in #{endtime - starttime} seconds.\n"
 end
 
 def copy_media
 	starttime = Time.now
-	execute 'printf \'Copying generated openFrameworks media... \''
-	execute "mv -f sketches/*/bin/data/out/* assets/#$current_asset_dir/openFrameworks/"
+	print "Copying generated openFrameworks media... "
+	execute_silent "mv -f sketches/*/bin/data/out/* assets/#$current_asset_dir/openFrameworks/"
 	endtime = Time.now
-	execute "printf \'completed in #{endtime - starttime} seconds.\n\'"
+	print "completed in #{endtime - starttime} seconds.\n"
 end
 
 def generate_files
 	starttime = Time.now
-	execute 'printf \'Generating jekyll post files... \''
+	print "Generating jekyll post files... "
 	Dir.foreach "assets/#$current_asset_dir/openFrameworks/" do |filename|
 		if filename.end_with? '.gif'
 			filename.slice! '.gif'
@@ -97,7 +97,7 @@ def generate_files
 		end
 	end
 	endtime = Time.now
-	execute "printf \'completed in #{endtime - starttime} seconds.\n\'"
+	print "completed in #{endtime - starttime} seconds.\n"
 end
 
 def generate_post datestring, ext
@@ -122,6 +122,10 @@ def execute commandstring
 	puts "\nExecuting command:"
 	puts "------------------"
 	puts "#{commandstring}\n"
+	execute_silent commandstring
+end
+
+def execute_silent commandstring
 	if $no_errors
 		$no_errors = system commandstring
 		unless $no_errors

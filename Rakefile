@@ -37,24 +37,20 @@ end
 #tasks
 def print_all_status
 	puts "Sketches status:\n================\n"
-	execute "git status"
+	execute_silent "git status"
 	puts "\nAssets status:\n==============\n"
-	execute "cd assets/#$current_asset_dir && git status && cd ../.."
+	execute_silent "cd assets/#$current_asset_dir && git status && cd ../.."
 	puts "\nJekyll status:\n==============\n"
-	execute "cd dailysketches.github.io && git status && cd .."
+	execute_silent "cd dailysketches.github.io && git status && cd .."
 end
 
 def deploy_all datestring
-	puts "Deploying sketch:\n=================\n"
-	execute "git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
-	puts "Deploying assets:\n=================\n"
-	execute_silent "cd assets/#$current_asset_dir"
-	execute "git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
-	execute_silent "cd ../../"
-	puts "Deploying jekyll:\n=================\n"
-	execute_silent "cd dailysketches.github.io"
-	execute "git add -A && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
-	execute_silent "cd ../"
+	puts "\nDeploying sketch:\n================="
+	execute "pwd && git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
+	puts "\nDeploying assets:\n================="
+	execute "cd assets/#{$current_asset_dir} && pwd && git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
+	puts "\nDeploying jekyll:\n================="
+	execute "cd dailysketches.github.io && pwd && git add -A && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
 end
 
 def copy_templates
@@ -119,9 +115,7 @@ def generate_readme datestring, ext
 end
 
 def execute commandstring
-	puts "\nExecuting command:"
-	puts "------------------"
-	puts "#{commandstring}\n"
+	puts "Executing command: #{commandstring}"
 	execute_silent commandstring
 end
 

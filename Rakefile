@@ -48,7 +48,7 @@ end
 
 def deploy_all datestring
 	puts "\nDeploying sketch:\n================="
-	execute "pwd && git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
+	execute "pwd && git add sketches && git commit -m 'Adds sketch #{datestring}' && git push"
 	puts "\nDeploying assets:\n================="
 	execute "cd assets/#{$current_asset_dir} && pwd && git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
 	puts "\nDeploying jekyll:\n================="

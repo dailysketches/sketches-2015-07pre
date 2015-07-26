@@ -72,9 +72,7 @@ def deploy_all datestring
 end
 
 def validate
-	expected_assets_all_present = validate_expected_asset_present
-	no_unexpected_assets_present = validate_unexpected_assets_not_present
-	expected_assets_all_present && no_unexpected_assets_present
+	validate_unexpected_assets_not_present && validate_expected_asset_present
 end
 
 def validate_expected_asset_present
@@ -82,7 +80,7 @@ def validate_expected_asset_present
 	sketch_dirs.each do |sketch_dir|
 		expected_asset_selector = "#{$sketches_dir}#{sketch_dir}/bin/data/out/#{sketch_dir}.*"
 		if Dir.glob(expected_asset_selector).empty?
-			puts "WARNING: No asset found in 'bin/data/out' folder of sketch #{sketch_dir}"
+			puts "WARNING: No valid asset found in 'bin/data/out' of sketch #{sketch_dir}"
 			valid = false
 		end
 	end
@@ -95,7 +93,7 @@ def validate_unexpected_assets_not_present
 		all_asset_selector = "#{$sketches_dir}#{sketch_dir}/bin/data/out/*.*"
 		Dir.glob(all_asset_selector).select do |entry|
 			if File.basename(entry, '.*') != sketch_dir || !$sketch_extensions.include?(File.extname(entry))
-				puts "WARNING: Unexpected asset #{File.basename entry} found in 'bin/data/out' folder of sketch #{sketch_dir}"
+				puts "WARNING: Unexpected asset '#{File.basename entry}' found in 'bin/data/out' of sketch #{sketch_dir}"
 				valid = false
 			end
 		end

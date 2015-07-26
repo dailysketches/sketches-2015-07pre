@@ -7,10 +7,18 @@ $no_errors = true
 
 #api
 task :copy do
-	copy_templates
-	copy_sketches
-	copy_media
-	generate_files
+	if validate
+		copy_templates
+		copy_sketches
+		copy_media
+		generate_files
+	else
+		puts 'Please fix these errors before copying'
+	end
+end
+
+task :validate do
+	validate
 end
 
 task :status do
@@ -58,6 +66,24 @@ def deploy_all datestring
 	execute "cd assets/#{$current_asset_dir} && pwd && git add */#{datestring}.* && git commit -m 'Adds sketch #{datestring}' && git push"
 	puts "\nDeploying jekyll:\n================="
 	execute "cd dailysketches.github.io && pwd && git add app/_posts/#{datestring}-sketch.md && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
+end
+
+def validate
+	valid = true
+	sketchesDir = '../openFrameworks/versions/084/apps/dailySketches/'
+	sketchDirs = Dir.entries(sketchesDir).select do |entry|
+		File.directory? File.join(sketchesDir, entry) and !(entry == '.' || entry == '..')
+	end
+
+	sketchDirs.each do |sketchDir|
+		expectedAssetSelector = "#{sketchesDir}#{sketchDir}/bin/data/out/#{sketchDir}.*"
+		if Dir.glob(expectedAssetSelector).empty?
+			puts "WARNING: No asset found for sketch #{sketchDir}"
+			valid = false
+		end
+	end
+
+	valid
 end
 
 def copy_templates

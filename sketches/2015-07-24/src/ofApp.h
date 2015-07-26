@@ -23,7 +23,9 @@ public:
     void gotMessage(ofMessage msg);
 
     ofxGifEncoderTemplate gif;
-    ofxTexturePlane transp1, transp2, transp3, transp4, transp5, transp6;
+    vector<ofxTexturePlane> layers, masks;
+    ofxTexturePlane plane;
     ofxLayerMask masker;
-    float increment;
+    float increment, numLayers;
+    string filename;
 };

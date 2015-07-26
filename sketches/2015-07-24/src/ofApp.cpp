@@ -8,78 +8,62 @@ End description */
 /* Snippet begin */
 void ofApp::setup(){
     increment = 0.02;
+    numLayers = 3;
+    filename = "condensation-transp2.png";
+
     ofSetWindowShape(500, 500);
-    gif.setupPaused(ofGetTimestampString("out/%Y-%m-%d"), 220, 300);
+    gif.setupPaused(ofGetTimestampString("out/%Y-%m-%d"), 240, 280);
     gif.fadeInOut(8, 2, ofColor::white, 1);
+
     masker.setup(3);
-    transp1.setup("condensation-transp2.png");
-    transp1.setTexturePositionY(0.5);
-    transp2.setup("condensation-transp2.png");
-    transp2.setTexturePositionY(0.5);
-    transp3.setup("condensation-transp2.png");
-    transp3.setTexturePositionY(0.5);
-    transp4.setup("condensation-transp2.png");
-    transp4.setTexturePositionY(0.5);
-    transp5.setup("condensation-transp2.png");
-    transp5.setTexturePositionY(0.5);
-    transp6.setup("condensation-transp2.png");
-    transp6.setTexturePositionY(0.5);
+    plane.setup(filename);
+    plane.setTexturePositionY(0.5);
+    for(int i = 0; i < numLayers; i++) {
+        layers.push_back(plane);
+        masks.push_back(plane);
+    }
 }
 
 void ofApp::update(){
-    masker.beginLayer(0);
-    {
-        transp1.incrementTextureOffsetY(-increment);
-        transp1.incrementTextureScale(-increment);
-        transp1.draw();
-    }
-    masker.endLayer(0);
+    for(int i = 0; i < numLayers; i++) {
+        masker.beginLayer(i);
+        {
+            if(i == 0) {
+                layers.at(i).incrementTextureOffsetY(-increment);
+                layers.at(i).incrementTextureScale(-increment);
+            }
+            if(i == 1) {
+                layers.at(i).incrementTextureOffsetY(increment);
+                layers.at(i).incrementTextureScale(increment);
+            }
+            if(i == 2) {
+                layers.at(i).incrementTextureOffsetX(increment);
+                layers.at(i).incrementTextureScale(-increment);
+            }
+            layers.at(i).draw();
+        }
+        masker.endLayer(i);
 
-    masker.beginMask(0);
-    {
-        transp2.incrementTextureOffsetY(-increment);
-        transp2.incrementTextureScale(-increment*0.5);
-        ofBackground(ofColor::white);
-        ofSetColor(ofColor::white);
-        transp2.draw();
+        masker.beginMask(i);
+        {
+            ofBackground(ofColor::white);
+            ofSetColor(ofColor::white);
+            if(i == 0) {
+                masks.at(i).incrementTextureOffsetY(-increment);
+                masks.at(i).incrementTextureScale(-increment*0.5);
+            }
+            if(i == 1) {
+                masks.at(i).incrementTextureOffsetY(increment);
+                masks.at(i).incrementTextureScale(increment*0.5);
+            }
+            if(i == 2) {
+                masks.at(i).incrementTextureOffsetX(-increment);
+                masks.at(i).incrementTextureScale(increment*0.5);
+            }
+            masks.at(i).draw();
+        }
+        masker.endMask(i);
     }
-    masker.endMask(0);
-    
-    masker.beginLayer(1);
-    {
-        transp3.incrementTextureOffsetY(increment);
-        transp3.incrementTextureScale(increment);
-        transp3.draw();
-    }
-    masker.endLayer(1);
-    
-    masker.beginMask(1);
-    {
-        transp4.incrementTextureOffsetY(increment);
-        transp4.incrementTextureScale(increment*0.5);
-        ofBackground(ofColor::white);
-        ofSetColor(ofColor::white);
-        transp4.draw();
-    }
-    masker.endMask(1);
-    
-    masker.beginLayer(2);
-    {
-        transp5.incrementTextureOffsetX(increment);
-        transp5.incrementTextureScale(-increment);
-        transp5.draw();
-    }
-    masker.endLayer(2);
-    
-    masker.beginMask(2);
-    {
-        transp6.incrementTextureOffsetX(-increment);
-        transp6.incrementTextureScale(increment*0.5);
-        ofBackground(ofColor::white);
-        ofSetColor(ofColor::white);
-        transp6.draw();
-    }
-    masker.endMask(2);
 }
 
 void ofApp::draw(){

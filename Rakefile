@@ -4,6 +4,7 @@ include ERB::Util
 
 $current_asset_dir = 'sketches-2015-04-22'
 $no_errors = true
+$sketch_extensions = ['.gif', '.png', '.mp3']
 $sketches_dir = '../openFrameworks/versions/084/apps/dailySketches/'
 $templates_dir = '../openFrameworks/versions/084/apps/dailySketchesTemplates/'
 
@@ -71,7 +72,9 @@ def deploy_all datestring
 end
 
 def validate
-	validate_expected_asset_present && validate_unexpected_assets_not_present
+	expected_assets_all_present = validate_expected_asset_present
+	no_unexpected_assets_present = validate_unexpected_assets_not_present
+	expected_assets_all_present && no_unexpected_assets_present
 end
 
 def validate_expected_asset_present
@@ -79,7 +82,7 @@ def validate_expected_asset_present
 	sketch_dirs.each do |sketch_dir|
 		expected_asset_selector = "#{$sketches_dir}#{sketch_dir}/bin/data/out/#{sketch_dir}.*"
 		if Dir.glob(expected_asset_selector).empty?
-			puts "WARNING: No asset found for sketch #{sketch_dir}"
+			puts "WARNING: No asset found in 'bin/data/out' folder of sketch #{sketch_dir}"
 			valid = false
 		end
 	end
@@ -91,8 +94,8 @@ def validate_unexpected_assets_not_present
 	sketch_dirs.each do |sketch_dir|
 		all_asset_selector = "#{$sketches_dir}#{sketch_dir}/bin/data/out/*.*"
 		Dir.glob(all_asset_selector).select do |entry|
-			unless File.basename(entry, '.*') == sketch_dir
-				puts "WARNING: Unexpected asset #{File.basename entry} found in sketch #{sketch_dir}"
+			if File.basename(entry, '.*') != sketch_dir || !$sketch_extensions.include?(File.extname(entry))
+				puts "WARNING: Unexpected asset #{File.basename entry} found in 'bin/data/out' folder of sketch #{sketch_dir}"
 				valid = false
 			end
 		end

@@ -50,11 +50,11 @@ end
 
 def deploy_all datestring
 	puts "\nDeploying sketch:\n================="
-	execute "pwd && git add sketches && git commit -m 'Adds sketch #{datestring}' && git push"
+	execute "pwd && git add sketches/#{datestring} && git commit -m 'Adds sketch #{datestring}' && git push"
 	puts "\nDeploying assets:\n================="
-	execute "cd assets/#{$current_asset_dir} && pwd && git add -A && git commit -m 'Adds sketch #{datestring}' && git push"
+	execute "cd assets/#{$current_asset_dir} && pwd && git add */#{datestring}.* && git commit -m 'Adds sketch #{datestring}' && git push"
 	puts "\nDeploying jekyll:\n================="
-	execute "cd dailysketches.github.io && pwd && git add -A && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
+	execute "cd dailysketches.github.io && pwd && git add app/_posts/#{datestring}-sketch.md && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
 end
 
 def copy_templates

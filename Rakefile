@@ -26,6 +26,8 @@ task :deploy, :datestring do |t, args|
 		puts 'Usage: rake deploy[yyyy-mm-dd]'
 	elsif args[:datestring] == 'today'
 		deploy_all Date::today.strftime
+	elsif args[:datestring] == 'yesterday'
+		deploy_all Date::today.prev_day.strftime
 	else
 		datestring = args[:datestring].strip.chomp('\n')
 		if datestring == ''

@@ -4,6 +4,8 @@ include ERB::Util
 
 $current_asset_dir = 'sketches-2015-04-22'
 $no_errors = true
+$sketches_dir = '../openFrameworks/versions/084/apps/dailySketches/'
+$templates_dir = '../openFrameworks/versions/084/apps/dailySketchesTemplates/'
 
 #api
 task :copy do
@@ -69,27 +71,45 @@ def deploy_all datestring
 end
 
 def validate
-	valid = true
-	sketchesDir = '../openFrameworks/versions/084/apps/dailySketches/'
-	sketchDirs = Dir.entries(sketchesDir).select do |entry|
-		File.directory? File.join(sketchesDir, entry) and !(entry == '.' || entry == '..')
-	end
+	validate_expected_asset_present && validate_unexpected_assets_not_present
+end
 
-	sketchDirs.each do |sketchDir|
-		expectedAssetSelector = "#{sketchesDir}#{sketchDir}/bin/data/out/#{sketchDir}.*"
-		if Dir.glob(expectedAssetSelector).empty?
-			puts "WARNING: No asset found for sketch #{sketchDir}"
+def validate_expected_asset_present
+	valid = true
+	sketch_dirs.each do |sketch_dir|
+		expected_asset_selector = "#{$sketches_dir}#{sketch_dir}/bin/data/out/#{sketch_dir}.*"
+		if Dir.glob(expected_asset_selector).empty?
+			puts "WARNING: No asset found for sketch #{sketch_dir}"
 			valid = false
 		end
 	end
-
 	valid
+end
+
+def validate_unexpected_assets_not_present
+	valid = true
+	sketch_dirs.each do |sketch_dir|
+		all_asset_selector = "#{$sketches_dir}#{sketch_dir}/bin/data/out/*.*"
+		Dir.glob(all_asset_selector).select do |entry|
+			unless File.basename(entry, '.*') == sketch_dir
+				puts "WARNING: Unexpected asset #{File.basename entry} found in sketch #{sketch_dir}"
+				valid = false
+			end
+		end
+	end
+	valid
+end
+
+def sketch_dirs
+	Dir.entries($sketches_dir).select do |entry|
+		File.directory? File.join($sketches_dir, entry) and !(entry == '.' || entry == '..')
+	end
 end
 
 def copy_templates
 	starttime = Time.now
 	print "Copying openFrameworks templates... "
-	execute_silent 'rsync -ru ../openFrameworks/versions/084/apps/dailySketchesTemplates/ templates'
+	execute_silent "rsync -ru #{$templates_dir} templates"
 	endtime = Time.now
 	print "completed in #{endtime - starttime} seconds.\n"
 end
@@ -97,7 +117,7 @@ end
 def copy_sketches
 	starttime = Time.now
 	print "Copying openFrameworks sketches... "
-	execute_silent 'rsync -ru ../openFrameworks/versions/084/apps/dailySketches/ sketches'
+	execute_silent "rsync -ru #{$sketches_dir} sketches"
 	endtime = Time.now
 	print "Completed in #{endtime - starttime} seconds.\n"
 end

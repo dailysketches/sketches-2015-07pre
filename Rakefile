@@ -23,7 +23,10 @@ end
 
 task :deploy, :datestring do |t, args|
 	if args[:datestring] == nil
-		puts 'Usage: rake deploy[yyyy-mm-dd]'
+		puts 'This command deploys one sketch at a time, identified by it\'s date'
+		puts 'Usage: rake deploy[today]'
+		puts 'or:    rake deploy[yesterday]'
+		puts 'or:    rake deploy[yyyy-mm-dd]'
 	elsif args[:datestring] == 'today'
 		deploy_all Date::today.strftime
 	elsif args[:datestring] == 'yesterday'

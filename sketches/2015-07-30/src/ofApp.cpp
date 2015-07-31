@@ -9,7 +9,7 @@ End description */
 void ofApp::setup(){
     ofSetWindowShape(1000, 800);
     gif.setupPaused(ofGetTimestampString("out/%Y-%m-%d"), 160, 220, 500, 500, ISOLATE_DRAWING);
-    gif.fadeInOut(2, 4, ofColor::white, 4);
+    gif.fadeInOut(1, 2, ofColor::white, 1);
     masker.setup(500, 500, 1, ISOLATE_LAYERS);
     masker.toggleOverlay();
     foil1.setup("foil.png", 500, 500, 2.0);
@@ -95,7 +95,7 @@ void ofApp::update(){
         }
         shapeSystem.draw();
         
-        ofDisableAlphaBlending();
+        //ofDisableAlphaBlending();
     }
     masker.endMask(0);
 }
@@ -109,7 +109,7 @@ void ofApp::draw(){
         foil2.incrementTextureOffset(0.0025, 0.003);
         foil2.draw();
         masker.draw();
-        ofDisableAlphaBlending();
+        //ofDisableAlphaBlending();
     }
     gif.endAndCaptureFrame();
     gif.draw();

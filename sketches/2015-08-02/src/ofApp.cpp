@@ -3,7 +3,7 @@
 {
     It's a direction.
 }
-End description */
+ End description */
 
 /* Snippet begin */
 void ofApp::setup(){
@@ -19,8 +19,7 @@ void ofApp::setup(){
 void ofApp::update(){
     masker.beginLayer(0);
     {
-        foil.setTexturePosition(ofRandom(2), ofRandom(2));
-        foil.setTextureScale(ofRandom(1.0, 6.0));
+        foil.incrementTextureOffsetY(0.01);
         ofSetColor(ofColor::red);
         foil.draw();
     }
@@ -28,8 +27,7 @@ void ofApp::update(){
     
     masker.beginMask(0);
     {
-        glass.setTexturePosition(ofRandom(2), ofRandom(2));
-        glass.setTextureScale(ofRandom(1.0, 6.0));
+        glass.incrementTextureOffsetY(-0.01);
         ofBackground(ofColor::white);
         if(ofRandom(1) > 0.25) {
             ofSetColor(ofColor(ofColor::white, 120));
@@ -37,7 +35,7 @@ void ofApp::update(){
         }
     }
     masker.endMask(0);
-
+    
     masker.beginLayer(1);
     {
         ofSetColor(ofColor::white);
@@ -49,7 +47,6 @@ void ofApp::update(){
     {
         ofBackground(ofColor::black);
         ofSetColor(ofColor::white);
-        gif.rotateAroundCenter(35);
         ofRect(50, 200, 170, 90);
     }
     masker.endMask(1);
@@ -112,33 +109,33 @@ void ofApp::keyPressed(int key){
 }
 
 void ofApp::keyReleased(int key){
-
+    
 }
 
 void ofApp::mouseMoved(int x, int y ){
-
+    
 }
 
 void ofApp::mouseDragged(int x, int y, int button){
-
+    
 }
 
 void ofApp::mousePressed(int x, int y, int button){
-
+    
 }
 
 void ofApp::mouseReleased(int x, int y, int button){
-
+    
 }
 
 void ofApp::windowResized(int w, int h){
-
+    
 }
 
 void ofApp::gotMessage(ofMessage msg){
-
+    
 }
 
 void ofApp::dragEvent(ofDragInfo dragInfo){
-
+    
 }

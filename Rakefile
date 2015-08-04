@@ -196,7 +196,7 @@ date:   #{datestring}
     <ul>
 		<li><a href="{% post_url #{datestring}-sketch %}">permalink</a></li>
 		<li><a href="https://github.com/dailysketches/dailySketches/tree/master/sketches/#{datestring}">code</a></li>
-		<li><a href="#" class="snippet-button">snippet</a></li>
+		<li><a href="#" class="snippet-button">show snippet</a></li>
 	</ul>
     <pre class="snippet">
         <code class="cpp">#{get_code(datestring)}</code>

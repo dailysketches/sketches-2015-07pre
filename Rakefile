@@ -105,15 +105,14 @@ end
 def validate_snippet_and_description
 	valid = true
 	sketch_dirs.each do |sketch_dir|
-		source_cpp_path = "#{$sketches_dir}#{sketch_dir}/src/ofApp.cpp"
 		dest_cpp_path = "sketches/#{sketch_dir}/src/ofApp.cpp"
 		unless File.exist?(dest_cpp_path)
-			contents = read_snippet_contents source_cpp_path
+			contents = read_snippet_contents sketch_dir
 			if contents.nil? || contents.empty? || contents == $default_description_text
 				puts "WARNING: Snippet not found for sketch #{sketch_dir}"
 				valid = false
 			end
-			contents = read_description_contents source_cpp_path
+			contents = read_description_contents sketch_dir
 			if contents.nil? || contents.empty? || contents == $default_description_text
 				puts "WARNING: Description not found for sketch #{sketch_dir}"
 				valid = false
@@ -221,10 +220,10 @@ date:   #{datestring}
 		<li><a href="#" class="snippet-button">show snippet</a></li>
 	</ul>
     <pre class="snippet">
-        <code class="cpp">#{get_snippet(datestring)}</code>
+        <code class="cpp">#{read_snippet_contents(datestring)}</code>
     </pre>
 </div>
-<p class="description">#{get_description(datestring)}</p>
+<p class="description">#{read_description_contents(datestring)}</p>
 #{ext == 'gif' ? render_post_gif(datestring) : render_post_mp3(datestring)}
 eos
 end
@@ -263,34 +262,10 @@ Yes, openFrameworks could use a good equivalent of [bundler](http://bundler.io/)
 eos
 end
 
-def get_snippet datestring
-	filepath = "sketches/#{datestring}/src/ofApp.cpp"
-	contents = read_snippet_contents filepath
-	if contents == nil
-		execute "printf \'\nWARNING: Cannot find code for sketch #{datestring}\n\'"
-		'Your code here'
-	else
-		html_escape(contents.strip.chomp('\n'))
-	end
-end
-
-def get_description datestring
-	filepath = "sketches/#{datestring}/src/ofApp.cpp"
-	contents = read_description_contents filepath
-	if contents == nil
-		execute "printf \'\nWARNING: Cannot find description for sketch #{datestring}\n\'"
-		'Description here'
-	else
-		if contents == $default_description_text
-			execute "printf \'\nWARNING: You have not written a description for sketch #{datestring}\n\'"
-		end
-		contents
-	end
-end
-
-def read_snippet_contents cpp_file_path
-	if File.exist?(cpp_file_path)
-		file = open(cpp_file_path, 'r')
+def read_snippet_contents sketch_dir
+	source_cpp_path = "#{$sketches_dir}#{sketch_dir}/src/ofApp.cpp"
+	if File.exist?(source_cpp_path)
+		file = open(source_cpp_path, 'r')
 		contents = file.read
 		file.close
 		contents[/\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m, 1]
@@ -299,9 +274,10 @@ def read_snippet_contents cpp_file_path
 	end
 end
 
-def read_description_contents cpp_file_path
-	if File.exist?(cpp_file_path)
-		file = open(cpp_file_path, 'r')
+def read_description_contents sketch_dir
+	source_cpp_path = "#{$sketches_dir}#{sketch_dir}/src/ofApp.cpp"
+	if File.exist?(source_cpp_path)
+		file = open(source_cpp_path, 'r')
 		contents = file.read
 		file.close
 		description = contents[/\/\* Begin description\n\{(.*?)\}\nEnd description \*\//m, 1]

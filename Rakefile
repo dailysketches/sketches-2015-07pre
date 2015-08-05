@@ -7,6 +7,7 @@ $no_errors = true
 $sketch_extensions = ['.gif', '.png', '.mp3']
 $sketches_dir = '../openFrameworks/versions/084/apps/dailySketches/'
 $templates_dir = '../openFrameworks/versions/084/apps/dailySketchesTemplates/'
+$default_description_text = 'Write your description here'
 
 #api
 task :copy do
@@ -72,7 +73,7 @@ def deploy_all datestring
 end
 
 def validate
-	validate_unexpected_assets_not_present && validate_expected_asset_present
+	validate_unexpected_assets_not_present && validate_expected_asset_present && validate_snippet_and_description
 end
 
 def validate_expected_asset_present
@@ -96,6 +97,24 @@ def validate_unexpected_assets_not_present
 				puts "WARNING: Unexpected asset '#{File.basename entry}' found in 'bin/data/out' of sketch #{sketch_dir}"
 				valid = false
 			end
+		end
+	end
+	valid
+end
+
+def validate_snippet_and_description
+	valid = true
+	sketch_dirs.each do |sketch_dir|
+		cpp_file_path = "#{$sketches_dir}#{sketch_dir}/src/ofApp.cpp"
+		contents = read_snippet_contents cpp_file_path
+		if contents.nil? || contents.empty? || contents == $default_description_text
+			puts "WARNING: Snippet not found for sketch #{sketch_dir}"
+			valid = false
+		end
+		contents = read_description_contents cpp_file_path
+		if contents.nil? || contents.empty? || contents == $default_description_text
+			puts "WARNING: Description not found for sketch #{sketch_dir}"
+			valid = false
 		end
 	end
 	valid
@@ -199,7 +218,7 @@ date:   #{datestring}
 		<li><a href="#" class="snippet-button">show snippet</a></li>
 	</ul>
     <pre class="snippet">
-        <code class="cpp">#{get_code(datestring)}</code>
+        <code class="cpp">#{get_snippet(datestring)}</code>
     </pre>
 </div>
 <p class="description">#{get_description(datestring)}</p>
@@ -241,44 +260,55 @@ Yes, openFrameworks could use a good equivalent of [bundler](http://bundler.io/)
 eos
 end
 
-def get_code datestring
+def get_snippet datestring
 	filepath = "sketches/#{datestring}/src/ofApp.cpp"
-	if File.exist?(filepath)
-		file = open(filepath, 'r')
-		contents = file.read
-		file.close
-		contents = contents[/\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m, 1]
-		if contents == nil
-			execute "printf \'\nWARNING: Cannot find code for sketch #{datestring}\n\'"
-			'Your code here'
-		else
-			html_escape(contents.strip.chomp('\n'))
-		end
-	else
-		execute "printf \'\nWARNING: Cannot find ofApp.cpp file for sketch #{datestring}\n\'"
+	contents = read_snippet_contents filepath
+	if contents == nil
+		execute "printf \'\nWARNING: Cannot find code for sketch #{datestring}\n\'"
 		'Your code here'
+	else
+		html_escape(contents.strip.chomp('\n'))
 	end
 end
 
 def get_description datestring
 	filepath = "sketches/#{datestring}/src/ofApp.cpp"
-	if File.exist?(filepath)
-		file = open(filepath, 'r')
+	contents = read_description_contents filepath
+	if contents == nil
+		execute "printf \'\nWARNING: Cannot find description for sketch #{datestring}\n\'"
+		'Description here'
+	else
+		if contents == $default_description_text
+			execute "printf \'\nWARNING: You have not written a description for sketch #{datestring}\n\'"
+		end
+		contents
+	end
+end
+
+def read_snippet_contents cpp_file_path
+	if File.exist?(cpp_file_path)
+		file = open(cpp_file_path, 'r')
 		contents = file.read
 		file.close
-		contents = contents[/\/\* Begin description\n\{(.*?)\}\nEnd description \*\//m, 1]
-		if contents == nil
-			execute "printf \'\nWARNING: Cannot find description for sketch #{datestring}\n\'"
-			'Description here'
+		contents[/\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m, 1]
+	else
+		nil
+	end
+end
+
+def read_description_contents cpp_file_path
+	if File.exist?(cpp_file_path)
+		file = open(cpp_file_path, 'r')
+		contents = file.read
+		file.close
+		description = contents[/\/\* Begin description\n\{(.*?)\}\nEnd description \*\//m, 1]
+		if description.nil?
+			description
 		else
-			contents = html_escape(contents.strip.chomp('\n'))
-			if contents == 'Write your description here'
-				execute "printf \'\nWARNING: You have not written a description for sketch #{datestring}\n\'"
-			end
-			contents
+			html_escape(description.strip.chomp('\n'))
 		end
 	else
-		'Description here'
+		nil
 	end
 end
 

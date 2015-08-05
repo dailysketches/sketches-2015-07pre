@@ -105,16 +105,19 @@ end
 def validate_snippet_and_description
 	valid = true
 	sketch_dirs.each do |sketch_dir|
-		cpp_file_path = "#{$sketches_dir}#{sketch_dir}/src/ofApp.cpp"
-		contents = read_snippet_contents cpp_file_path
-		if contents.nil? || contents.empty? || contents == $default_description_text
-			puts "WARNING: Snippet not found for sketch #{sketch_dir}"
-			valid = false
-		end
-		contents = read_description_contents cpp_file_path
-		if contents.nil? || contents.empty? || contents == $default_description_text
-			puts "WARNING: Description not found for sketch #{sketch_dir}"
-			valid = false
+		source_cpp_path = "#{$sketches_dir}#{sketch_dir}/src/ofApp.cpp"
+		dest_cpp_path = "sketches/#{sketch_dir}/src/ofApp.cpp"
+		unless File.exist?(dest_cpp_path)
+			contents = read_snippet_contents source_cpp_path
+			if contents.nil? || contents.empty? || contents == $default_description_text
+				puts "WARNING: Snippet not found for sketch #{sketch_dir}"
+				valid = false
+			end
+			contents = read_description_contents source_cpp_path
+			if contents.nil? || contents.empty? || contents == $default_description_text
+				puts "WARNING: Description not found for sketch #{sketch_dir}"
+				valid = false
+			end
 		end
 	end
 	valid

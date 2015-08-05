@@ -1,4 +1,5 @@
-#include "ofApp.h"/* Begin description
+#include "ofApp.h"
+/* Begin description
 {
     No such thing as progress.
 }

@@ -3,7 +3,7 @@
 {
     It's a direction.
 }
- End description */
+End description */
 
 /* Snippet begin */
 void ofApp::setup(){

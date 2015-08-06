@@ -263,33 +263,26 @@ eos
 end
 
 def read_snippet_contents sketch_dir
-	source_cpp_path = "#{$sketches_dir}#{sketch_dir}/src/ofApp.cpp"
-	if File.exist?(source_cpp_path)
-		file = open(source_cpp_path, 'r')
-		contents = file.read
-		file.close
-		snippet = contents[/\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m, 1]
-		if snippet.nil?
-			snippet
-		else
-			html_escape(snippet.strip.chomp('\n'))
-		end
-	else
-		nil
-	end
+	regex = /\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m
+	read_cpp_contents sketch_dir, regex
 end
 
 def read_description_contents sketch_dir
+	regex = /\/\* Begin description\n\{(.*?)\}\nEnd description \*\//m
+	read_cpp_contents sketch_dir, regex
+end
+
+def read_cpp_contents sketch_dir, regex
 	source_cpp_path = "#{$sketches_dir}#{sketch_dir}/src/ofApp.cpp"
 	if File.exist?(source_cpp_path)
 		file = open(source_cpp_path, 'r')
 		contents = file.read
 		file.close
-		description = contents[/\/\* Begin description\n\{(.*?)\}\nEnd description \*\//m, 1]
-		if description.nil?
-			description
+		selected = contents[regex, 1]
+		if selected.nil?
+			selected
 		else
-			html_escape(description.strip.chomp('\n'))
+			html_escape(selected.strip.chomp('\n'))
 		end
 	else
 		nil

@@ -268,7 +268,12 @@ def read_snippet_contents sketch_dir
 		file = open(source_cpp_path, 'r')
 		contents = file.read
 		file.close
-		contents[/\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m, 1]
+		snippet = contents[/\/\* Snippet begin \*\/(.*?)\/\* Snippet end \*\//m, 1]
+		if snippet.nil?
+			snippet
+		else
+			html_escape(snippet.strip.chomp('\n'))
+		end
 	else
 		nil
 	end

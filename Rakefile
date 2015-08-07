@@ -240,7 +240,7 @@ This subfolder of the [dailySketches repo](#$github_org_url/#$current_sketch_rep
 
 #{ext == 'gif' ? render_readme_gif(datestring) : render_readme_mp3(datestring)}
 
-This source code is published automatically along with each sketch I add to [Daily Sketches](http://dailysketches.github.io). Here is a [permalink to this sketch](http://dailysketches.github.io/sketch-#{reverse datestring}/) on the Daily Sketches site.
+This source code is published automatically along with each sketch I add to [Daily Sketches](#$live_url). Here is a [permalink to this sketch](#$live_url/sketch-#{reverse datestring}/) on the Daily Sketches site.
 
 Run this yourself
 --

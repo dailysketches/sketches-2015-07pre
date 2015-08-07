@@ -3,6 +3,7 @@ require 'erb'
 include ERB::Util
 
 $current_asset_dir = 'sketches-2015-04-22'
+$current_sketch_repo = 'dailySketches'
 $no_errors = true
 $sketch_extensions = ['.gif', '.png', '.mp3']
 $sketches_dir = '../openFrameworks/versions/084/apps/dailySketches/'
@@ -219,7 +220,7 @@ date:   #{datestring}
 <div class="code">
     <ul>
 		<li><a href="{% post_url #{datestring}-sketch %}">permalink</a></li>
-		<li><a href="#$github_org_url/dailySketches/tree/master/sketches/#{datestring}">code</a></li>
+		<li><a href="#$github_org_url/#$current_sketch_repo/tree/master/sketches/#{datestring}">code</a></li>
 		<li><a href="#" class="snippet-button">show snippet</a></li>
 	</ul>
     <pre class="snippet">
@@ -235,7 +236,7 @@ def readme_file_contents datestring, ext
 	<<-eos
 Sketch #{datestring}
 --
-This subfolder of the [dailySketches repo](#$github_org_url/dailySketches) is the root of an individual openFrameworks sketch. It contains the full source code used to generate this sketch:
+This subfolder of the [dailySketches repo](#$github_org_url/#$current_sketch_repo) is the root of an individual openFrameworks sketch. It contains the full source code used to generate this sketch:
 
 #{ext == 'gif' ? render_readme_gif(datestring) : render_readme_mp3(datestring)}
 

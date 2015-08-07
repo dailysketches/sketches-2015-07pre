@@ -2,6 +2,7 @@ require 'date'
 require 'erb'
 include ERB::Util
 
+$site_name = 'Daily Sketches'
 $current_asset_dir = 'sketches-2015-04-22'
 $current_sketch_repo = 'dailySketches'
 $no_errors = true
@@ -240,7 +241,7 @@ This subfolder of the [#$current_sketch_repo repo](#$github_org_url/#$current_sk
 
 #{ext == 'gif' ? render_readme_gif(datestring) : render_readme_mp3(datestring)}
 
-This source code is published automatically along with each sketch I add to [Daily Sketches](#$live_url). Here is a [permalink to this sketch](#$live_url/sketch-#{reverse datestring}/) on the Daily Sketches site.
+This source code is published automatically along with each sketch I add to [#$site_name](#$live_url). Here is a [permalink to this sketch](#$live_url/sketch-#{reverse datestring}/) on the #$site_name site.
 
 Run this yourself
 --
@@ -326,6 +327,6 @@ end
 def render_readme_mp3 datestring
 	<<-eos
 ![Sketch #{datestring}](#{raw_url datestring, 'png'})
-[Listen to the sketch on Daily Sketches](#$live_url/sketch-#{reverse datestring}/)"
+[Listen to the sketch on #$site_name](#$live_url/sketch-#{reverse datestring}/)"
 eos
 end

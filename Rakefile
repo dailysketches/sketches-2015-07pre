@@ -1,21 +1,14 @@
 require 'date'
 require 'erb'
+require 'yaml'
 include ERB::Util
-
-$site_name = 'Daily Sketches'
-$current_asset_dir = 'sketches-2015-04-22'
-$current_sketch_repo = 'dailySketches'
 $no_errors = true
 $sketch_extensions = ['.gif', '.png', '.mp3']
-$sketches_dir = '../openFrameworks/versions/084/apps/dailySketches/'
-$templates_dir = '../openFrameworks/versions/084/apps/dailySketchesTemplates/'
-$jekyll_dir = 'dailysketches.github.io'
-$live_url = 'http://dailysketches.github.io'
-$github_org_url = 'https://github.com/dailysketches'
 $default_description_text = 'Write your description here'
 
 #api
 task :copy do
+	load_config
 	if validate
 		copy_templates
 		copy_sketches
@@ -27,18 +20,22 @@ task :copy do
 end
 
 task :validate do
+	load_config
 	validate
 end
 
 task :status do
+	load_config
 	print_all_status
 end
 
 task :st do
+	load_config
 	print_all_status
 end
 
 task :deploy, :datestring do |t, args|
+	load_config
 	if args[:datestring] == nil
 		puts 'This command deploys one sketch at a time, identified by it\'s date'
 		puts 'Usage: rake deploy[today]'
@@ -56,6 +53,19 @@ task :deploy, :datestring do |t, args|
 			deploy_all datestring
 		end
 	end
+end
+
+#config
+def load_config
+	config = YAML.load_file('config.yml')
+	$site_name = config['site_name']
+	$current_asset_dir = config['current_asset_dir']
+	$current_sketch_repo = config['current_sketch_repo']
+	$sketches_dir = config['sketches_dir']
+	$templates_dir = config['templates_dir']
+	$jekyll_dir = config['jekyll_dir']
+	$live_url = config['live_url']
+	$github_org_url = config['github_org_url']
 end
 
 #tasks

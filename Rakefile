@@ -236,7 +236,7 @@ def readme_file_contents datestring, ext
 	<<-eos
 Sketch #{datestring}
 --
-This subfolder of the [dailySketches repo](#$github_org_url/#$current_sketch_repo) is the root of an individual openFrameworks sketch. It contains the full source code used to generate this sketch:
+This subfolder of the [#$current_sketch_repo repo](#$github_org_url/#$current_sketch_repo) is the root of an individual openFrameworks sketch. It contains the full source code used to generate this sketch:
 
 #{ext == 'gif' ? render_readme_gif(datestring) : render_readme_mp3(datestring)}
 

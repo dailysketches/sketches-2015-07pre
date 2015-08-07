@@ -7,6 +7,7 @@ $no_errors = true
 $sketch_extensions = ['.gif', '.png', '.mp3']
 $sketches_dir = '../openFrameworks/versions/084/apps/dailySketches/'
 $templates_dir = '../openFrameworks/versions/084/apps/dailySketchesTemplates/'
+$jekyll_dir = 'dailysketches.github.io'
 $default_description_text = 'Write your description here'
 
 #api
@@ -60,7 +61,7 @@ def print_all_status
 	puts "\nAssets status:\n==============\n"
 	execute_silent "cd assets/#$current_asset_dir && git status && cd ../.."
 	puts "\nJekyll status:\n==============\n"
-	execute_silent "cd dailysketches.github.io && git status && cd .."
+	execute_silent "cd #$jekyll_dir && git status && cd .."
 end
 
 def deploy_all datestring
@@ -69,7 +70,7 @@ def deploy_all datestring
 	puts "\nDeploying assets:\n================="
 	execute "cd assets/#{$current_asset_dir} && pwd && git add */#{datestring}.* && git commit -m 'Adds sketch #{datestring}' && git push"
 	puts "\nDeploying jekyll:\n================="
-	execute "cd dailysketches.github.io && pwd && git add app/_posts/#{datestring}-sketch.md && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
+	execute "cd #$jekyll_dir && pwd && git add app/_posts/#{datestring}-sketch.md && git commit -m 'Adds sketch #{datestring}' && git push && grunt deploy"
 end
 
 def validate
@@ -172,7 +173,7 @@ def generate_files
 end
 
 def generate_post datestring, ext
-	filepath = "dailysketches.github.io/app/_posts/#{datestring}-sketch.md"
+	filepath = "#$jekyll_dir/app/_posts/#{datestring}-sketch.md"
 	unless File.exist?(filepath)
 		file = open(filepath, 'w')
 		file.write(post_file_contents datestring, ext)

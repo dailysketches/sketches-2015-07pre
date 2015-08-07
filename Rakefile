@@ -9,6 +9,7 @@ $sketches_dir = '../openFrameworks/versions/084/apps/dailySketches/'
 $templates_dir = '../openFrameworks/versions/084/apps/dailySketchesTemplates/'
 $jekyll_dir = 'dailysketches.github.io'
 $live_url = 'http://dailysketches.github.io'
+$github_org_url = 'https://github.com/dailysketches'
 $default_description_text = 'Write your description here'
 
 #api
@@ -218,7 +219,7 @@ date:   #{datestring}
 <div class="code">
     <ul>
 		<li><a href="{% post_url #{datestring}-sketch %}">permalink</a></li>
-		<li><a href="https://github.com/dailysketches/dailySketches/tree/master/sketches/#{datestring}">code</a></li>
+		<li><a href="#$github_org_url/dailySketches/tree/master/sketches/#{datestring}">code</a></li>
 		<li><a href="#" class="snippet-button">show snippet</a></li>
 	</ul>
     <pre class="snippet">
@@ -234,7 +235,7 @@ def readme_file_contents datestring, ext
 	<<-eos
 Sketch #{datestring}
 --
-This subfolder of the [dailySketches repo](https://github.com/dailysketches/dailySketches) is the root of an individual openFrameworks sketch. It contains the full source code used to generate this sketch:
+This subfolder of the [dailySketches repo](#$github_org_url/dailySketches) is the root of an individual openFrameworks sketch. It contains the full source code used to generate this sketch:
 
 #{ext == 'gif' ? render_readme_gif(datestring) : render_readme_mp3(datestring)}
 
@@ -298,7 +299,7 @@ def reverse datestring
 end
 
 def raw_url datestring, ext
-	"https://github.com/dailysketches/#$current_asset_dir/blob/master/openFrameworks/#{datestring}.#{ext}?raw=true"
+	"#$github_org_url/#$current_asset_dir/blob/master/openFrameworks/#{datestring}.#{ext}?raw=true"
 end
 
 def render_post_gif datestring

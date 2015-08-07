@@ -16,7 +16,7 @@ If the sketch uses any [addons](http://www.ofxaddons.com/unsorted) you don't alr
 
 In XCode you will see a panel like this. Expand the folders under `addons` until you can see some of the source files underneath.
 
-![How to find missing addon dependencies](../../images/dependencies.png)
+![How to find missing addon dependencies](https://github.com/dailysketches/dailySketches/blob/master/images/dependencies.png?raw=true)
 
 In the example above, the addon `ofxLayerMask` is missing (it's source files are red), but `ofxGifEncoder` is present.
 

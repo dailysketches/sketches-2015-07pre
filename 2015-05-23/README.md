@@ -2,7 +2,7 @@ Sketch 2015-05-23
 --
 This subfolder of the [dailySketches repo](https://github.com/dailysketches/dailySketches) is the root of an individual openFrameworks sketch. It contains the full source code used to generate this sketch:
 
-![Sketch 2015-05-23](https://github.com/dailysketches/sketches-2015-04-22/blob/master/openFrameworks/2015-05-23.gif?raw=true)
+![Sketch 2015-05-23](https://github.com/dailysketches/assets-2015-07pre/blob/master/openFrameworks/2015-05-23.gif?raw=true)
 
 This source code is published automatically along with each sketch I add to [Daily Sketches](http://dailysketches.github.io). Here is a [permalink to this sketch](http://dailysketches.github.io/sketch-23-05-2015/) on the Daily Sketches site.
 
@@ -16,7 +16,7 @@ If the sketch uses any [addons](http://www.ofxaddons.com/unsorted) you don't alr
 
 In XCode you will see a panel like this. Expand the folders under `addons` until you can see some of the source files underneath.
 
-![How to find missing addon dependencies](../../images/dependencies.png)
+![How to find missing addon dependencies](https://github.com/dailysketches/dailySketches/blob/master/images/dependencies.png?raw=true)
 
 In the example above, the addon `ofxLayerMask` is missing (it's source files are red), but `ofxGifEncoder` is present.
 

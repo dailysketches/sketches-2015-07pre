@@ -8,6 +8,7 @@ $sketch_extensions = ['.gif', '.png', '.mp3']
 $sketches_dir = '../openFrameworks/versions/084/apps/dailySketches/'
 $templates_dir = '../openFrameworks/versions/084/apps/dailySketchesTemplates/'
 $jekyll_dir = 'dailysketches.github.io'
+$live_url = 'http://dailysketches.github.io'
 $default_description_text = 'Write your description here'
 
 #api
@@ -323,6 +324,6 @@ end
 def render_readme_mp3 datestring
 	<<-eos
 ![Sketch #{datestring}](#{raw_url datestring, 'png'})
-[Listen to the sketch on Daily Sketches](http://dailysketches.github.io/sketch-#{reverse datestring}/)"
+[Listen to the sketch on Daily Sketches](#$live_url/sketch-#{reverse datestring}/)"
 eos
 end
